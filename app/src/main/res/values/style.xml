@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FontStyle">
+        <item name="fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="FontStyle.Bold">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+    <style name="FontStyle.Extra">
+        <item name="fontFamily">@font/open_sans_extra_bold</item>
+    </style>
+    <style name="FontStyle.SemiBold">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+    </style>
+    <style name="Integral">
+        <item name="fontFamily">@font/integral_regular</item>
+    </style>
+
+
+
+</resources>
+

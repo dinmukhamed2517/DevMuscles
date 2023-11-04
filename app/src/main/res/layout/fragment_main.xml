@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/main_bg"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/photo_1"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="45dp"
+        android:layout_marginVertical="60dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="32sp"
+        android:maxLines="2"
+        android:text="Action is the key to all success"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/start_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/main_green"
+        app:icon="@drawable/arrow_right"
+        app:iconGravity="end"
+        android:layout_marginHorizontal="100dp"
+        android:text="Start Now"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:iconTint="@color/black"
+        app:iconSize="24dp"
+        />
+
+</LinearLayout>
