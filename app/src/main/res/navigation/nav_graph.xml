@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
 
 
-<!--    <fragment
-        android:id="@+id/mainFragment"
-        android:name="kz.just_code.devmuscles.fragments.MainFragment"
-        android:label="MainFragment" >
+    <fragment
+        android:id="@+id/home"
+        android:name="kz.just_code.devmuscles.fragments.HomeFragment"
+        android:label="HomeFragment" >
         <action
-            android:id="@+id/action_mainFragment_to_genderFragment"
-            app:destination="@id/genderFragment" />
+            android:id="@+id/action_homeFragment_to_workoutsFragment"
+            app:destination="@id/workoutsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/genderFragment"
-        android:name="kz.just_code.devmuscles.fragments.GenderFragment"
-        android:label="GenderFragment" >
-        <action
-            android:id="@+id/action_genderFragment_to_ageFragment"
-            app:destination="@id/ageFragment" />
-    </fragment>
+        android:id="@+id/workoutsFragment"
+        android:name="kz.just_code.devmuscles.fragments.WorkoutsFragment"
+        android:label="WorkoutsFragment" />
     <fragment
-        android:id="@+id/ageFragment"
-        android:name="kz.just_code.devmuscles.fragments.AgeFragment"
-        android:label="AgeFragment" />-->
+        android:id="@+id/profile"
+        android:name="kz.just_code.devmuscles.fragments.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/statistics"
+        android:name="kz.just_code.devmuscles.fragments.StatisticsFragment"
+        android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/notification"
+        android:name="kz.just_code.devmuscles.fragments.NotificationFragment"
+        android:label="NotificationFragment" />`
+
+
+
+
+
 </navigation>

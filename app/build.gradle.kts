@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    //google service plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -55,6 +57,12 @@ dependencies {
     //material design
     implementation ("com.google.android.material:material:1.10.0")
 
+    // firebase bom
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
+    // firebase auth
+    implementation("com.google.firebase:firebase-auth")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

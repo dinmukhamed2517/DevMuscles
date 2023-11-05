@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537777437589",
+    "project_id": "devmuscles-c20d2",
+    "storage_bucket": "devmuscles-c20d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537777437589:android:6d1c2b562f7b88b3b2949c",
+        "android_client_info": {
+          "package_name": "kz.just_code.devmuscles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9ajU_-LFMcEqKKc-VexdDUiWguMRQbZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
