@@ -27,16 +27,20 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
             )
         }
         adapter.itemClick = {
-            Toast.makeText(requireContext(), "good", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(
+                HomeFragmentDirections
+                    .actionHomeToWorkoutDetailsFragment(it.id, it.title, it.type, it.calories, it.duration, it.description)
+            )
         }
     }
 
-    private fun getWorkouts():List<WorkoutDto>{
+     private fun getWorkouts():List<WorkoutDto>{
         return listOf(
-            WorkoutDto(1, "Workout with dumbels", Type.INTERMEDIATE),
-            WorkoutDto(2, "Chess workout", Type.BEGINNER),
-            WorkoutDto(3, "Shoulder workout", Type.INTERMEDIATE),
-            WorkoutDto(4, "Leg workout", Type.ADVANCE),
+            WorkoutDto(1, "Workout with dumbels", Type.INTERMEDIATE, 350, 60, getString(R.string.description_placeholder) ),
+            WorkoutDto(2, "Chess workout", Type.BEGINNER, 400, 15, getString(R.string.description_placeholder)),
+            WorkoutDto(3, "Shoulder workout", Type.INTERMEDIATE, 400, 15, getString(R.string.description_placeholder)),
+            WorkoutDto(4, "Leg workout", Type.ADVANCE, 230, 40, getString(R.string.description_placeholder)),
+
         )
     }
 }

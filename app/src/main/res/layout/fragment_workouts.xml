@@ -17,7 +17,9 @@
         android:layout_marginTop="45dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/beginner_btn"
@@ -26,6 +28,7 @@
         android:backgroundTint="@color/grey"
         android:text="Beginner"
         android:layout_marginLeft="24dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -35,6 +38,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
         android:text="Intermediate"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/advance_btn"
         app:layout_constraintStart_toEndOf="@+id/beginner_btn"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -45,14 +50,18 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
         android:text="Advance"
-        app:layout_constraintStart_toEndOf="@+id/intermediate_btn"
+        android:layout_marginRight="24dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workout_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintTop_toBottomOf="@+id/intermediate_btn"
         tools:listitem="@layout/item_workout"
-        tools:itemCount="4"
+        tools:itemCount="2"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

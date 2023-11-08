@@ -61,7 +61,11 @@ class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(Worko
 data class WorkoutDto(
     var id:Int,
     var title:String,
-    var type:Type
+    var type:Type,
+    var calories:Int,
+    var duration:Int,
+    var description:String,
+
 )
 
 enum class Type{

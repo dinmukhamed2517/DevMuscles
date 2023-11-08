@@ -3,6 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     //google service plugin
     id("com.google.gms.google-services")
+
+    //save args
+    id("androidx.navigation.safeargs")
 }
 
 android {

@@ -7,7 +7,7 @@
     android:background="@color/main_bg">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -19,7 +19,7 @@
         tools:text="Warm up" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -27,11 +27,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         tools:text="04 Workout for beginner" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -40,30 +40,34 @@
         android:textColor="@color/white"
         app:icon="@drawable/baseline_play_circle_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        app:iconTint="@color/white"
         app:iconSize="24dp"
         tools:text="60 min" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/grey"
         app:iconSize="24dp"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
         app:icon="@drawable/baseline_local_fire_department_24"
-        app:layout_constraintStart_toEndOf="@+id/materialButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/duration"
+        app:layout_constraintTop_toBottomOf="@+id/type"
         tools:text="350 Cal" />
 
     <TextView
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton"
+        app:layout_constraintTop_toBottomOf="@+id/duration"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="15dp"
-        tools:text="Want your body to be healthy. Join our program with directions according to body’s goals. Increasing physical strength is the goal of
-        strenght training. Maintain body fitness by doing physical exercise at least 2-3 times a week. " />
+        tools:text="@string/description_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
