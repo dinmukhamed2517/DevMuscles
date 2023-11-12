@@ -45,25 +45,8 @@
         android:name="kz.just_code.devmuscles.fragments.WorkoutDetailsFragment"
         android:label="WorkoutDetailsFragment" >
         <argument
-            android:name="id"
-            app:argType="integer" />
-        <argument
-            android:name="title"
-            app:argType="string" />
-        <argument
-            android:name="type"
-            app:argType="kz.just_code.devmuscles.Type" />
-        <argument
-            android:name="calories"
-            app:argType="integer" />
-        <argument
-            android:name="duration"
-            app:argType="integer" />
-        <argument
-            android:name="description"
-            app:argType="string" />
-
-
+            android:name="WorkoutItem"
+            app:argType="kz.just_code.devmuscles.model.WorkoutDto" />
     </fragment>
     <fragment
         android:id="@+id/sign_up"

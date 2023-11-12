@@ -1,13 +1,14 @@
 package kz.just_code.devmuscles.fragments
 
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kz.just_code.devmuscles.ItemWorkoutAdapter
 import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.Type
-import kz.just_code.devmuscles.WorkoutDto
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentWorkoutsBinding
+import kz.just_code.devmuscles.model.WorkoutDto
 
 class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBinding::inflate) {
     override fun onBindView() {
@@ -20,10 +21,12 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
 
             adapter.submitList(getWorkouts())
         }
-        adapter.itemClick = {
+        adapter.itemClick = {workoutItem, shared->
+
+            val extras = FragmentNavigatorExtras(*shared.toList().toTypedArray())
             findNavController().navigate(
                 WorkoutsFragmentDirections
-                    .actionWorkoutsFragmentToWorkoutDetailsFragment(it.id, it.title, it.type, it.calories, it.duration, it.description)
+                    .actionWorkoutsFragmentToWorkoutDetailsFragment(workoutItem), extras
             )
         }
     }

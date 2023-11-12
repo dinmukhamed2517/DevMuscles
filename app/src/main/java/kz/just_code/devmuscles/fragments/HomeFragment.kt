@@ -1,15 +1,14 @@
 package kz.just_code.devmuscles.fragments
 
-import android.widget.Toast
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import kz.just_code.devmuscles.ItemWorkoutAdapter
 import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.Type
-import kz.just_code.devmuscles.WorkoutDto
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentHomeBinding
+import kz.just_code.devmuscles.model.WorkoutDto
 
 class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     override fun onBindView() {
@@ -26,11 +25,10 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
                 R.id.action_homeFragment_to_workoutsFragment
             )
         }
-        adapter.itemClick = {
-            findNavController().navigate(
-                HomeFragmentDirections
-                    .actionHomeToWorkoutDetailsFragment(it.id, it.title, it.type, it.calories, it.duration, it.description)
-            )
+        adapter.itemClick = {workoutItem, shared->
+            val extras = FragmentNavigatorExtras(*shared.toList().toTypedArray())
+            val action = HomeFragmentDirections.actionHomeToWorkoutDetailsFragment(workoutItem)
+            findNavController().navigate(action, extras)
         }
     }
 

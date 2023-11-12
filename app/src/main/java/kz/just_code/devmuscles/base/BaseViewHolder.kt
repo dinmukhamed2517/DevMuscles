@@ -2,7 +2,7 @@ package kz.just_code.devmuscles.base
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import kz.just_code.devmuscles.WorkoutDto
+import kz.just_code.devmuscles.model.WorkoutDto
 
 abstract class BaseViewHolder<VB:ViewBinding, T>(protected open val binding:VB):
 RecyclerView.ViewHolder(binding.root){

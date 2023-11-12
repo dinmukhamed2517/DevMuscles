@@ -1,16 +1,18 @@
 package kz.just_code.devmuscles
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
 import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
+import kz.just_code.devmuscles.model.WorkoutDto
 
 class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
 
-    var itemClick:((WorkoutDto)-> Unit)? = null
+    var itemClick:((WorkoutDto, Map<View, String>)-> Unit)? = null
     class WorkoutDiffUtils:DiffUtil.ItemCallback<WorkoutDto>(){
         override fun areItemsTheSame(oldItem: WorkoutDto, newItem: WorkoutDto): Boolean {
             return oldItem.id == newItem.id
@@ -38,35 +40,32 @@ class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(Worko
             with(binding){
                 title.text = item.title
                 var typeText = ""
-                if(item.type.ordinal == Type.BEGINNER.ordinal){
-                    typeText = "Workouts for Beginner"
+                when (item.type.ordinal) {
+                    Type.BEGINNER.ordinal -> {
+                        typeText = "Workouts for Beginner"
+                    }
+                    Type.ADVANCE.ordinal -> {
+                        typeText = "Workouts for Advance"
+                    }
+                    Type.INTERMEDIATE.ordinal -> {
+                        typeText = "Workouts for Intermediate"
+                    }
                 }
-                else if(item.type.ordinal == Type.ADVANCE.ordinal){
-                    typeText = "Workouts for Advance"
-                }
-                else if(item.type.ordinal == Type.INTERMEDIATE.ordinal){
-                    typeText = "Workouts for Intermediate"
-                }
-                workoutType.text = typeText
+                type.text = typeText
+                type.transitionName = "type_${item.id}"
+                title.transitionName = "title_${item.id}"
             }
             itemView.setOnClickListener {
-                itemClick?.invoke(item)
+                itemClick?.invoke(item, mapOf(
+                    binding.title to "title_${item.id}",
+                    binding.type to "type_${item.id}",
+
+                ))
             }
         }
     }
 }
 
-
-
-data class WorkoutDto(
-    var id:Int,
-    var title:String,
-    var type:Type,
-    var calories:Int,
-    var duration:Int,
-    var description:String,
-
-)
 
 enum class Type{
     BEGINNER, INTERMEDIATE, ADVANCE

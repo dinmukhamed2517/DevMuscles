@@ -1,6 +1,7 @@
 package kz.just_code.devmuscles.fragments
 
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentWorkoutDetailsBinding
 
@@ -9,14 +10,19 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
     override fun onBindView() {
         super.onBindView()
         with(binding){
-            title.text = args.title
+            val workoutItem = args.workoutItem
+            title.text = workoutItem.title
 
-            type.text = "Workouts for ${args.type}"
+            type.text = "Workouts for ${workoutItem.type}"
 
-            calories.text = "${args.calories} Cal"
-            duration.text = "${args.duration} min"
-            description.text = args.description
+            calories.text = "${workoutItem.calories} Cal"
+            duration.text = "${workoutItem.duration} min"
+            description.text = workoutItem.description
+            title.transitionName = "title_${workoutItem.id}"
+            type.transitionName = "type_${workoutItem.id}"
+
         }
+        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
 
     }
 }

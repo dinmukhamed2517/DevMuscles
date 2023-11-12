@@ -10,6 +10,7 @@
     >
     
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/item_workout_img"
@@ -25,21 +26,21 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Learn the Basic of Training"
+            android:layout_marginStart="25dp"
+            tools:text="Learn the Basic of Training"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/type"
-            android:layout_marginLeft="25dp"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/workout_type"
+            android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="06 Workouts  for Beginner"
             android:textColor="@color/main_green"
-            android:textSize="16dp"
-            android:layout_marginLeft="25dp"
+            android:textSize="16sp"
+            android:layout_marginStart="25dp"
             android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

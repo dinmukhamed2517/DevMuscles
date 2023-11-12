@@ -6,6 +6,9 @@ plugins {
 
     //save args
     id("androidx.navigation.safeargs")
+
+    // parselize
+    id("kotlin-parcelize")
 }
 
 android {
