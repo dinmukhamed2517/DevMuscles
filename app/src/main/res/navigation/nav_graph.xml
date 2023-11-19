@@ -33,9 +33,9 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/statistics"
-        android:name="kz.just_code.devmuscles.fragments.StatisticsFragment"
-        android:label="StatisticsFragment" />
+        android:id="@+id/chat"
+        android:name="kz.just_code.devmuscles.fragments.ChatFragment"
+        android:label="ChatFragment" />
     <fragment
         android:id="@+id/notification"
         android:name="kz.just_code.devmuscles.fragments.NotificationFragment"
@@ -45,8 +45,8 @@
         android:name="kz.just_code.devmuscles.fragments.WorkoutDetailsFragment"
         android:label="WorkoutDetailsFragment" >
         <argument
-            android:name="WorkoutItem"
-            app:argType="kz.just_code.devmuscles.model.WorkoutDto" />
+            android:name="Workout"
+            app:argType="kz.just_code.devmuscles.repository.workout.model.Workout" />
     </fragment>
     <fragment
         android:id="@+id/sign_up"

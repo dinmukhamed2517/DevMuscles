@@ -1,4 +1,4 @@
-package kz.just_code.devmuscles.repository
+package kz.just_code.devmuscles.repository.workout.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

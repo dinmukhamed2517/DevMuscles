@@ -1,4 +1,4 @@
-package kz.just_code.devmuscles.network
+package kz.just_code.devmuscles.network.workout
 
 import dagger.Module
 import dagger.Provides

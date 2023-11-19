@@ -1,11 +1,9 @@
-package kz.just_code.devmuscles.network
+package kz.just_code.devmuscles.network.workout
 
-import kz.just_code.devmuscles.repository.Workout
+import kz.just_code.devmuscles.repository.workout.model.Workout
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
-import javax.inject.Inject
 
 interface WorkoutApi {
     @GET("exercises?limit=50")

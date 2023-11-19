@@ -1,4 +1,4 @@
-package kz.just_code.devmuscles.network
+package kz.just_code.devmuscles.network.gpt
 
 import dagger.Module
 import dagger.Provides
@@ -8,7 +8,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -32,6 +31,7 @@ object NetworkGptModule {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
     }
 

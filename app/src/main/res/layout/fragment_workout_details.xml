@@ -6,16 +6,30 @@
     android:layout_height="match_parent"
     android:background="@color/main_bg">
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.5"
+        tools:src="@drawable/biceps" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:textSize="28sp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
         tools:text="Warm up" />
 
     <TextView
@@ -30,44 +44,26 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:text="04 Workout for beginner" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/grey"
-        android:textColor="@color/white"
-        app:icon="@drawable/baseline_play_circle_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        app:iconTint="@color/white"
-        app:iconSize="24dp"
-        tools:text="60 min" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/calories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/grey"
-        app:iconSize="24dp"
-        app:iconTint="@color/white"
-        android:textColor="@color/white"
-        app:icon="@drawable/baseline_local_fire_department_24"
-        app:layout_constraintStart_toEndOf="@+id/duration"
-        app:layout_constraintTop_toBottomOf="@+id/type"
-        tools:text="350 Cal" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/duration"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/image"
+        tools:layout_editor_absoluteX="30dp"
         tools:text="@string/description_placeholder" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/item_workout_placeholder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

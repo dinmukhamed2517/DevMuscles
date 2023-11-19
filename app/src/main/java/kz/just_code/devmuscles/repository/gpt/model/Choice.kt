@@ -1,4 +1,6 @@
 package kz.just_code.devmuscles.repository.gpt.model
 
-class Choice {
-}
+data class Choice(
+    val index:Int,
+    val message: Message,
+)

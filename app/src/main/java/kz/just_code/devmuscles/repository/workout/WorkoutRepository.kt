@@ -1,8 +1,6 @@
-package kz.just_code.devmuscles.repository
+package kz.just_code.devmuscles.repository.workout
 
-import dagger.Binds
-import javax.inject.Singleton
-
+import kz.just_code.devmuscles.repository.workout.model.Workout
 
 
 interface WorkoutRepository {

@@ -1,11 +1,10 @@
-package kz.just_code.devmuscles
+package kz.just_code.devmuscles.repository.workout
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kz.just_code.devmuscles.base.BaseViewModel
-import kz.just_code.devmuscles.repository.Workout
-import kz.just_code.devmuscles.repository.WorkoutRepository
+import kz.just_code.devmuscles.repository.workout.model.Workout
 import javax.inject.Inject
 
 

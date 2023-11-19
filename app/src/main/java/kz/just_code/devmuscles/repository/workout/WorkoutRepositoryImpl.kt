@@ -1,9 +1,7 @@
-package kz.just_code.devmuscles.repository
+package kz.just_code.devmuscles.repository.workout
 
-import com.google.gson.Gson
-import kz.just_code.devmuscles.network.WorkoutApi
-import okhttp3.ResponseBody
-import retrofit2.Response
+import kz.just_code.devmuscles.network.workout.WorkoutApi
+import kz.just_code.devmuscles.repository.workout.model.Workout
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class WorkoutRepositoryImpl @Inject constructor(
     val api: WorkoutApi
-):WorkoutRepository {
+): WorkoutRepository {
     override suspend fun getWorkoutList(): List<Workout>? {
         val response = api.getExercises()
         if(response.isSuccessful) return response.body()

@@ -7,10 +7,10 @@
         android:title="Home"
         />
     <item
-        android:id="@+id/statistics"
+        android:id="@+id/chat"
         android:enabled="true"
-        android:icon="@drawable/stats_icon"
-        android:title="Statistics"/>
+        android:icon="@drawable/baseline_chat_24"
+        android:title="Chat"/>
     <item
         android:id="@+id/notification"
         android:enabled="true"

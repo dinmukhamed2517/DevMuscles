@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
 import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
-import kz.just_code.devmuscles.model.WorkoutDto
+import kz.just_code.devmuscles.fragments.titlecaseFirstChar
+import kz.just_code.devmuscles.repository.workout.model.Workout
 
-class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
+class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
 
-    var itemClick:((WorkoutDto, Map<View, String>)-> Unit)? = null
-    class WorkoutDiffUtils:DiffUtil.ItemCallback<WorkoutDto>(){
-        override fun areItemsTheSame(oldItem: WorkoutDto, newItem: WorkoutDto): Boolean {
+    var itemClick:((Workout, Map<View, String>)-> Unit)? = null
+    class WorkoutDiffUtils:DiffUtil.ItemCallback<Workout>(){
+        override fun areItemsTheSame(oldItem: Workout, newItem: Workout): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: WorkoutDto, newItem: WorkoutDto): Boolean {
+        override fun areContentsTheSame(oldItem: Workout, newItem: Workout): Boolean {
             return oldItem == newItem
         }
 
@@ -36,29 +37,48 @@ class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(Worko
 
 
     inner class WorkoutViewHolder(binding:ItemWorkoutBinding):BaseWorkoutViewHolder<ItemWorkoutBinding>(binding){
-        override fun bindView(item: WorkoutDto) {
+
+
+        override fun bindView(item: Workout) {
             with(binding){
-                title.text = item.title
-                var typeText = ""
-                when (item.type.ordinal) {
-                    Type.BEGINNER.ordinal -> {
-                        typeText = "Workouts for Beginner"
-                    }
-                    Type.ADVANCE.ordinal -> {
-                        typeText = "Workouts for Advance"
-                    }
-                    Type.INTERMEDIATE.ordinal -> {
-                        typeText = "Workouts for Intermediate"
-                    }
-                }
-                type.text = typeText
+                title.text = item.name?.titlecaseFirstChar()
+                type.text = item.target
+
                 type.transitionName = "type_${item.id}"
                 title.transitionName = "title_${item.id}"
+                var imageRes:Int? = null
+                when (item.target) {
+                    "abs" -> {
+                        imageRes = R.drawable.abs
+                    }
+                    "delts" -> {
+                        imageRes = R.drawable.delts
+                    }
+                    "biceps" -> {
+                        imageRes = R.drawable.biceps
+                    }
+                    "calves" -> {
+                        imageRes = R.drawable.calves
+                    }
+                    "quads" -> {
+                        imageRes = R.drawable.legs
+                    }
+                    "triceps" -> {
+                        imageRes = R.drawable.triceps
+                    }
+                    else -> {
+                        imageRes=R.drawable.the_rest
+                    }
+                }
+                image.setImageResource(imageRes)
+                image.transitionName = "image_${item.id}"
+
             }
             itemView.setOnClickListener {
                 itemClick?.invoke(item, mapOf(
                     binding.title to "title_${item.id}",
                     binding.type to "type_${item.id}",
+                    binding.image to "image_${item.id}"
 
                 ))
             }
@@ -66,7 +86,3 @@ class ItemWorkoutAdapter:ListAdapter<WorkoutDto, BaseWorkoutViewHolder<*>>(Worko
     }
 }
 
-
-enum class Type{
-    BEGINNER, INTERMEDIATE, ADVANCE
-}
