@@ -32,6 +32,9 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
 
         binding.animation.playAnimation()
         val adapter = ItemMessageAdapter()
+        binding.messageList.adapter = adapter
+        binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+
         binding.editText.setOnEditorActionListener(TextView.OnEditorActionListener{_, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_SEND){
                 if(binding.editText.text.toString().isNotEmpty()){
@@ -60,10 +63,7 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
                         frequencyPenalty = 0
                     )
                     viewModel.getPrompt(requestBody)
-
                     binding.editText.text?.clear()
-                    binding.messageList.adapter = adapter
-                    binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
                 }
                 else{
                     Toast.makeText(requireContext(), "Please enter something", Toast.LENGTH_SHORT).show()
