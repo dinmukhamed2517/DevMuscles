@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import kz.just_code.devmuscles.base.BaseMessageViewHolder
-import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
-import kz.just_code.devmuscles.databinding.ItemMessageBinding
+import kz.just_code.devmuscles.databinding.ItemMessageTrainerBinding
+import kz.just_code.devmuscles.databinding.ItemMessageUserBinding
 import kz.just_code.devmuscles.repository.gpt.model.Choice
-import kz.just_code.devmuscles.repository.gpt.model.Message
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -27,9 +26,16 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseMessageViewHolder<*> {
-        return MessageViewHolder(
-            ItemMessageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
+        return when(viewType){
+            VIEW_TYPE_TRAINER -> MessageViewHolder(
+                ItemMessageTrainerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            )
+            VIEW_TYPE_USER -> MessageUserViewHolder(
+                ItemMessageUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            )
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+
     }
 
     override fun onBindViewHolder(holder: BaseMessageViewHolder<*>, position: Int) {
@@ -38,14 +44,34 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
     }
 
 
-    inner class MessageViewHolder(binding: ItemMessageBinding):BaseMessageViewHolder<ItemMessageBinding>(binding){
+    inner class MessageViewHolder(binding: ItemMessageTrainerBinding):BaseMessageViewHolder<ItemMessageTrainerBinding>(binding){
         override fun bindView(item: Choice) {
             with(binding){
                 content.text = item.message.content
                 time.text = getCurrentHourAndMinute()
             }
         }
+    }
+    inner class MessageUserViewHolder(binding : ItemMessageUserBinding):BaseMessageViewHolder<ItemMessageUserBinding>(binding){
+        override fun bindView(item: Choice) {
+            with(binding){
+                content.text = item.message.content
+                time.text = getCurrentHourAndMinute()
+            }
+        }
+    }
 
+    override fun getItemViewType(position: Int): Int {
+        return when(getItem(position).message.role){
+            "assistant" -> VIEW_TYPE_TRAINER
+            "user" -> VIEW_TYPE_USER
+            else -> throw IllegalArgumentException("Invalid message role")
+        }
+    }
+
+    companion object{
+        private const val VIEW_TYPE_TRAINER = 1
+        private const val VIEW_TYPE_USER = 2
     }
 }
 

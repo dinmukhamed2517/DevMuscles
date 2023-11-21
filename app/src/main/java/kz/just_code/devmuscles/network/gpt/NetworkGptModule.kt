@@ -17,7 +17,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkGptModule {
     private const val baseUrl = "https://api.openai.com/v1/"
-    private val token = "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"
+    private val token = "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"
 
 
     val loggingInterceptor = HttpLoggingInterceptor().apply {

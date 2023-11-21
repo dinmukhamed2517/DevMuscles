@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="2"
-        tools:listitem="@layout/item_message" />
+        tools:listitem="@layout/item_message_trainer" />
 
 
 
@@ -33,7 +33,7 @@
         android:id="@+id/loading_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginEnd="120dp"
         android:layout_marginTop="10dp"
         android:visibility="gone"
         android:backgroundTint="@color/grey"
@@ -80,30 +80,33 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:hint="Message"
-        app:hintTextColor="@color/white"
         android:layout_marginHorizontal="30dp"
-        app:endIconMode="clear_text"
-        app:startIconTint="@color/white"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/message"
         android:textColorHint="@color/white"
-        app:endIconTint="@color/white"
+        app:endIconMode="custom"
+        app:endIconMinSize="35dp"
 
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:endIconScaleType="centerCrop"
+        app:endIconTint="@color/white"
+        app:endIconDrawable="@drawable/baseline_send_24"
+        app:hintTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconTint="@color/white">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="61dp"
             android:inputType="textCapSentences"
-            android:imeOptions="actionSend"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
