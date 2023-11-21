@@ -19,11 +19,10 @@ class GptViewModel @Inject constructor(
 
     private var _chatResponseLiveData = MutableLiveData<ChatResponse?>()
     var chatResponseLiveData:LiveData<ChatResponse?> = _chatResponseLiveData
-//    var chatResponses: MutableList<ChatResponse> = mutableListOf()
-    fun getPrompt(requestBody: RequestBody){
+    fun getPrompt(question: String){
         launch(
             request = {
-                repository.getPrompt(requestBody)
+                repository.getPrompt(question)
             },
             onSuccess = {
                 _chatResponseLiveData.postValue(it)

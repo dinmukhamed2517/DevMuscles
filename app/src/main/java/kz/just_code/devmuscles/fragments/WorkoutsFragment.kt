@@ -2,7 +2,9 @@ package kz.just_code.devmuscles.fragments
 
 import android.content.Context
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -33,9 +35,15 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
             workoutList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
 
-            textInputLayout.setStartIconOnClickListener {
-               getData()
-            }
+//            textInputLayout.setStartIconOnClickListener {
+//               getData()
+//            }
+            editText.setOnEditorActionListener(TextView.OnEditorActionListener{_, actionId, _ ->
+                if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                    getData()
+                }
+                false
+            })
         }
         viewModel.workoutListLiveData.observe(viewLifecycleOwner){
             adapter.submitList(it.orEmpty())

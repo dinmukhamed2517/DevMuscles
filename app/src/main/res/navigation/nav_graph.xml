@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/chat"
@@ -55,6 +58,9 @@
         <action
             android:id="@+id/action_signup_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_sign_up_to_profile"
+            app:destination="@id/profile" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -63,7 +69,14 @@
         <action
             android:id="@+id/action_loginFragment_to_home"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_loginFragment_to_sign_up"
+            app:destination="@id/sign_up" />
     </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="kz.just_code.devmuscles.fragments.EditProfileFragment"
+        android:label="EditProfileFragment" />
 
 
 </navigation>

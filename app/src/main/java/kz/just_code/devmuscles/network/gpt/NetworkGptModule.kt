@@ -6,16 +6,18 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.internal.http.RetryAndFollowUpInterceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkGptModule {
     private const val baseUrl = "https://api.openai.com/v1/"
-    private val token = "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"
+    private val token = "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"
 
 
     val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -24,6 +26,9 @@ object NetworkGptModule {
     private var client: OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(loggingInterceptor)
+        .readTimeout(50, TimeUnit.SECONDS)
+        .writeTimeout(50, TimeUnit.SECONDS)
+        .connectTimeout(50, TimeUnit.SECONDS)
         .addInterceptor { chain ->
         val newRequest: Request =
             chain.request()

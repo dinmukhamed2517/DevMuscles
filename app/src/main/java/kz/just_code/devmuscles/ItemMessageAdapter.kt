@@ -37,6 +37,7 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
 
     }
 
+
     inner class MessageViewHolder(binding: ItemMessageBinding):BaseMessageViewHolder<ItemMessageBinding>(binding){
         override fun bindView(item: Choice) {
             with(binding){

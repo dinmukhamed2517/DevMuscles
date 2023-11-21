@@ -24,19 +24,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="28dp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/avatar"
         tools:text="SARAH WEGAN" />
 
     <TextView
-        android:id="@+id/time_joined"
+        android:id="@+id/last_online"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/avatar"
@@ -51,7 +51,7 @@
         android:backgroundTint="@color/grey"
         android:gravity="start"
         android:textColor="@color/white"
-        android:text="Edit profile"
+        android:text="@string/edit_profile"
         app:iconTint="@color/white"
 
         android:layout_marginTop="20dp"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        android:textSize="16dp"
+        android:textSize="16sp"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -72,8 +72,8 @@
         android:layout_marginHorizontal="32dp"
         android:backgroundTint="@color/grey"
         android:gravity="start"
-        android:textSize="16dp"
-        android:text="Privacy Policy"
+        android:textSize="16sp"
+        android:text="@string/privacy_policy"
         app:icon="@drawable/arrow_big_icon"
         app:iconGravity="end"
         app:iconTint="@color/white"
@@ -92,8 +92,8 @@
         android:textColor="@color/white"
         app:iconTint="@color/white"
         android:gravity="start"
-        android:text="Settings"
-        android:textSize="16dp"
+        android:text="@string/settings"
+        android:textSize="16sp"
         app:icon="@drawable/arrow_big_icon"
         app:iconGravity="end"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,16 +103,18 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sign_out_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_green"
-        android:text="Sign out"
-        android:textColor="@color/red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginHorizontal="40dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_marginBottom="30dp"
-        android:textSize="16dp"
+        android:backgroundTint="@color/main_bg"
+        android:text="@string/sign_out"
+        android:textColor="@color/red"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
