@@ -1,5 +1,6 @@
 package kz.just_code.devmuscles.fragments
 
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
@@ -49,6 +50,11 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
             Glide.with(requireContext())
                 .load(workoutItem.gifUrl)
                 .into(image)
+            image.setOnClickListener {
+                findNavController().navigate(
+                    WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToFullscreenFragment(workoutItem.gifUrl)
+                )
+            }
         }
         sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
 

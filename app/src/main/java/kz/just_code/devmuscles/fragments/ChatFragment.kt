@@ -12,20 +12,21 @@ import kz.just_code.devmuscles.databinding.FragmentChatBinding
 import kz.just_code.devmuscles.repository.gpt.GptViewModel
 import kz.just_code.devmuscles.repository.gpt.model.Choice
 import kz.just_code.devmuscles.repository.gpt.model.Message
-import java.util.UUID
 
 
 @AndroidEntryPoint
 class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflate) {
 
     private val viewModel: GptViewModel by viewModels()
-    private val messageList = mutableListOf<Choice>()
+    private var messageList = mutableListOf<Choice>()
     var index:Int = 0
+
+
     override fun onBindView() {
         super.onBindView()
-        setUpLoader()
+//        setUpLoader()
 
-        binding.animation.playAnimation()
+//        binding.animation.playAnimation()
         val adapter = ItemMessageAdapter()
         binding.messageList.adapter = adapter
         binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
@@ -34,13 +35,12 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
 
         binding.til.setEndIconOnClickListener {
             if(binding.editText.text.toString().isNotEmpty()){
-                viewModel.getPrompt(binding.editText.text.toString())
                 val userMessage = Message("user", "${binding.editText.text.toString()}")
                 val choice = Choice(index++, userMessage)
                 messageList.add(choice)
-                adapter.submitList(listOf(choice).toList())
+                viewModel.getPrompt(binding.editText.text.toString())
+                adapter.submitList(messageList)
                 binding.editText.text?.clear()
-
             }
             else{
                 Toast.makeText(requireContext(), "Please enter something", Toast.LENGTH_SHORT).show()
@@ -49,18 +49,20 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
         viewModel.chatResponseLiveData.observe(viewLifecycleOwner){ response->
             if(response !=null){
                 messageList.add(response.choices[0])
-                adapter.submitList(messageList.toList())
+                adapter.submitList(messageList)
             }
             else{
                 Toast.makeText(requireContext(), "Response is empty", Toast.LENGTH_SHORT).show()
             }
-
+        }
+        binding.messageList.setOnClickListener {
+            binding.root.hideKeyboard()
         }
 
     }
     private fun setUpLoader() {
         viewModel.loadingLiveData.observe(this) {
-            binding.loadingView.isVisible = it
+//            binding.loadingView.isVisible = it
         }
     }
 

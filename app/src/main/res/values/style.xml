@@ -18,6 +18,9 @@
         <item name="fontFamily">@font/integral_regular</item>
     </style>
 
+    <style name="WhiteTextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorControlActivated">@color/white</item>
+    </style>
 
 
 </resources>

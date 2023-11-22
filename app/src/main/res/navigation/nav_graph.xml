@@ -50,6 +50,9 @@
         <argument
             android:name="Workout"
             app:argType="kz.just_code.devmuscles.repository.workout.model.Workout" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/sign_up"
@@ -77,6 +80,16 @@
         android:id="@+id/editProfileFragment"
         android:name="kz.just_code.devmuscles.fragments.EditProfileFragment"
         android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/fullscreenFragment"
+        android:name="kz.just_code.devmuscles.fragments.FullscreenFragment"
+        android:label="FullscreenFragment" >
+
+        <argument
+            android:name="gif_url"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 
 </navigation>

@@ -1,9 +1,12 @@
 package kz.just_code.devmuscles.fragments
 
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
@@ -15,17 +18,19 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
-
     @Inject  lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
     override fun onBindView() {
         super.onBindView()
-        with(binding){
-            val currentUser = firebaseAuth.currentUser
+        firestore = FirebaseFirestore.getInstance()
 
+        val currentUser = firebaseAuth.currentUser
+
+        with(binding){
             username.text = currentUser?.displayName
-            if(currentUser?.metadata?.lastSignInTimestamp != null){
+            if(currentUser?.metadata?.creationTimestamp != null){
                 val lastSignIn = getNormalData(currentUser?.metadata?.lastSignInTimestamp)
-                lastOnline.text = "Last online:\n $lastSignIn"
+                lastOnline.text = "Joined:\n $lastSignIn"
             }
 
             signOutBtn.setOnClickListener {
@@ -38,10 +43,11 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             }
         }
 
+
     }
     private fun getNormalData(millis:Long?):String{
         val millis = millis?.let { Date(it) }
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val formattedData = dateFormat.format(millis)
         return formattedData
     }
@@ -63,6 +69,29 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             .show()
     }
 
+    private fun loadUserImage(userId: String?) {
+        userId?.let { uid ->
+            firestore.collection("user_images").document(uid)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val imageUrl = documentSnapshot.getString("pic")
+                        imageUrl?.let {
+                            Glide.with(requireContext())
+                                .load(it)
+                                .into(binding.avatar)
+                        }
+                    } else {
+
+                        Toast.makeText(requireContext(), "there is no image", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(requireContext(), "Failed to retrieve image: ${exception.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -70,6 +99,9 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             findNavController().navigate(
                 R.id.action_profile_to_loginFragment
             )
+        }
+        else {
+            loadUserImage(firebaseAuth.currentUser!!.uid)
         }
     }
 }

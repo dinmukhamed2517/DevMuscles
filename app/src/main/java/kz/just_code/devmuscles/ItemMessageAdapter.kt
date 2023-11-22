@@ -17,11 +17,9 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
         override fun areItemsTheSame(oldItem: Choice, newItem: Choice): Boolean {
             return oldItem.index == newItem.index
         }
-
         override fun areContentsTheSame(oldItem: Choice, newItem: Choice): Boolean {
             return oldItem == newItem
         }
-
 
     }
 
@@ -36,6 +34,15 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
             else -> throw IllegalArgumentException("Invalid view type")
         }
 
+    }
+
+    override fun submitList(list: MutableList<Choice>?) {
+        val newList:MutableList<Choice> = mutableListOf()
+        list?.forEach {
+            newList.add(it)
+        }
+
+        super.submitList(newList)
     }
 
     override fun onBindViewHolder(holder: BaseMessageViewHolder<*>, position: Int) {

@@ -62,6 +62,8 @@ dependencies {
 
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.13.0")
+    implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
     kapt("com.github.bumptech.glide:compiler:4.13.0")
 
     // hilt DI

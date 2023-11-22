@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kz.just_code.devmuscles.utilities.RetryInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.http.RetryAndFollowUpInterceptor
@@ -17,7 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkGptModule {
     private const val baseUrl = "https://api.openai.com/v1/"
-    private val token = "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"
+    private val token = "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"
 
 
     val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -26,9 +27,10 @@ object NetworkGptModule {
     private var client: OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(loggingInterceptor)
-        .readTimeout(50, TimeUnit.SECONDS)
-        .writeTimeout(50, TimeUnit.SECONDS)
-        .connectTimeout(50, TimeUnit.SECONDS)
+        .addInterceptor(RetryInterceptor())
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
         .addInterceptor { chain ->
         val newRequest: Request =
             chain.request()

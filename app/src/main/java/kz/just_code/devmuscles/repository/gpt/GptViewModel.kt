@@ -16,7 +16,6 @@ import javax.inject.Inject
 class GptViewModel @Inject constructor(
     private val repository: GptRepositoryImpl
 ):BaseViewModel(){
-
     private var _chatResponseLiveData = MutableLiveData<ChatResponse?>()
     var chatResponseLiveData:LiveData<ChatResponse?> = _chatResponseLiveData
     fun getPrompt(question: String){
@@ -30,3 +29,6 @@ class GptViewModel @Inject constructor(
         )
     }
 }
+
+
+

@@ -20,6 +20,8 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
     override fun onBindView() {
         super.onBindView()
         val adapter = ItemWorkoutAdapter()
+
+        viewModel.getWorkouts()
         with(binding){
             workoutList.adapter = adapter
             workoutList.layoutManager =
