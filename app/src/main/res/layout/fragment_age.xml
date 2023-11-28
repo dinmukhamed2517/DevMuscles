@@ -13,25 +13,40 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:gravity="center"
-        android:text= "How old are you ?"
+        style="@style/Integral"
+        android:text= "@string/how_old_are_you"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <NumberPicker
+        android:id="@+id/number_picker"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:gravity="center"
-        android:layout_marginTop="12dp"
-        android:text="This helps us create your personalized plan"
-        android:textAllCaps="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginHorizontal="40dp"
+        android:backgroundTint="@color/main_color"
+        android:text="@string/next"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
+        app:icon="@drawable/arrow_right"
+        app:iconGravity="end"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

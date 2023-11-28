@@ -7,28 +7,94 @@
     android:background="@color/main_bg">
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/workout_categories"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/see_all_btn"
+        android:layout_width="50dp"
+        android:backgroundTint="@color/default_color"
+        android:layout_height="50dp"
+        android:elevation="12dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="15dp"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="40dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_search"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+
 
     <TextView
-        android:id="@+id/see_all_btn"
+        android:id="@+id/greating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search"
-        android:textColor="@color/main_green"
-        android:layout_marginEnd="15dp"
+        android:textColor="@color/black"
+
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/see_all_btn"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        tools:text="Hello, Sandra" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/default_color"
+        android:elevation="12dp"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar_placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/data"
+        android:textColor="@color/black"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/see_all_btn"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/greating"
+        tools:text="Today 25 Nov." />
+
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Integral"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/popular_exercises"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/workout_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:layout_editor_absoluteX="10dp" />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workout_list"
@@ -39,4 +105,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:itemCount="1"
         tools:listitem="@layout/item_workout" />
+
+
+    <TextView
+        android:id="@+id/textView14"
+        style="@style/Integral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/today_s_plane"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workout_list" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

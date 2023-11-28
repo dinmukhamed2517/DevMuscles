@@ -8,71 +8,77 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/main_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
+        android:layout_marginHorizontal="30dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.5"
-        tools:src="@drawable/biceps" />
+        app:layout_constraintTop_toBottomOf="@+id/bodyPart"
+        tools:src="@drawable/girl" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-
+    <androidx.cardview.widget.CardView
+        android:id="@+id/favorite_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/main_bg"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        tools:text="Warm up" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_favorite" />
+
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
-        android:id="@+id/type"
-        android:layout_width="match_parent"
+        android:id="@+id/bodyPart"
+        style="@style/Integral"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/main_green"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="04 Workout for beginner" />
+        app:layout_constraintEnd_toStartOf="@+id/favorite_btn"
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Biceps Workout" />
 
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <TextView
+        android:id="@+id/textView13"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        android:text="@string/other_exercises"
+        app:layout_constraintTop_toBottomOf="@+id/main_image" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:text="@string/description_placeholder" />
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        tools:itemCount="1"
+        android:layout_height="0dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:listitem="@layout/item_recommended_workout" />
 
     <ImageView
-        android:id="@+id/image"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
-        android:transitionName="gif_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintBottom_toBottomOf="@+id/bodyPart"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/item_workout_placeholder" />
+        app:layout_constraintTop_toTopOf="@+id/bodyPart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

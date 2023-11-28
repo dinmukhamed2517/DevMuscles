@@ -14,4 +14,6 @@ interface WorkoutApi {
     suspend fun getExercisesByTarget(
         @Path("target") target:String,
     ):Response<List<Workout>>
+
+
 }

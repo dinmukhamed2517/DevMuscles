@@ -1,13 +1,21 @@
 package kz.just_code.devmuscles.base
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.airbnb.lottie.LottieAnimationView
+import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.utilities.BottomNavigationViewListener
 import java.lang.Exception
 import java.lang.RuntimeException
@@ -48,6 +56,27 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>): 
             bottomNavigationViewListener = context
         } else {
             throw RuntimeException("$context, error")
+        }
+
+    }
+
+    protected fun showCustomDialog(title:String, content:String){
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_success_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val animationView: LottieAnimationView = dialog.findViewById(R.id.animation)
+        val titleTextView: TextView = dialog.findViewById(R.id.title)
+        val contentTextView: TextView = dialog.findViewById(R.id.content)
+
+        animationView.playAnimation()
+        titleTextView.text = title
+        contentTextView.text = content
+        dialog.show()
+        val button: Button = dialog.findViewById(R.id.ok_btn)
+        button.setOnClickListener {
+            dialog.dismiss()
         }
     }
 

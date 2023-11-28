@@ -16,6 +16,7 @@ import kz.just_code.devmuscles.ItemWorkoutAdapter
 import kz.just_code.devmuscles.repository.workout.WorkoutViewModel
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentWorkoutsBinding
+import kz.just_code.devmuscles.repository.workout.model.Workout
 
 
 @AndroidEntryPoint
@@ -23,6 +24,8 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
 
 
     private val viewModel: WorkoutViewModel by viewModels()
+
+
     override fun onBindView() {
         super.onBindView()
         val adapter = ItemWorkoutAdapter()
@@ -34,19 +37,31 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
             workoutList.adapter = adapter
             workoutList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-
-//            textInputLayout.setStartIconOnClickListener {
-//               getData()
-//            }
             editText.setOnEditorActionListener(TextView.OnEditorActionListener{_, actionId, _ ->
                 if(actionId == EditorInfo.IME_ACTION_SEARCH){
                     getData()
                 }
+
                 false
             })
+            nameChip.setOnClickListener {
+                viewModel.setSortedWorkouts(viewModel.workoutListLiveData.value?.sortByName() ?: emptyList())
+            }
+            targetChip.setOnClickListener {
+
+                viewModel.setSortedWorkouts(viewModel.workoutListLiveData.value?.sortByTarget() ?: emptyList())
+            }
+            equipment.setOnClickListener {
+                viewModel.setSortedWorkouts(viewModel.workoutListLiveData.value?.sortByEquipment() ?: emptyList())
+            }
+            backBtn.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
+
         }
         viewModel.workoutListLiveData.observe(viewLifecycleOwner){
-            adapter.submitList(it.orEmpty())
+            adapter.submitList(it)
         }
 
         adapter.itemClick = {workoutItem, shared->
@@ -72,9 +87,9 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
             Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
         }
     }
+
     private fun setUpError() {
         viewModel.exceptionLiveData.observe(this) {
-//            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             binding.textInputLayout.error = "Entered wrong data"
             binding.textInputLayout.isErrorEnabled = true
             binding.workoutList.isVisible = false
@@ -85,8 +100,24 @@ class WorkoutsFragment:BaseFragment<FragmentWorkoutsBinding>(FragmentWorkoutsBin
             binding.loading.isVisible = it
         }
     }
+
 }
 fun View.hideKeyboard() {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)
+}
+
+
+
+
+fun List<Workout>.sortByName(): List<Workout> {
+    return this.sortedBy { it.name.orEmpty() }
+}
+
+fun List<Workout>.sortByTarget(): List<Workout> {
+    return this.sortedBy { it.target.orEmpty() }
+}
+
+fun List<Workout>.sortByEquipment(): List<Workout> {
+    return this.sortedBy { it.equipment.orEmpty() }
 }

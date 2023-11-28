@@ -29,7 +29,7 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
 //        binding.animation.playAnimation()
         val adapter = ItemMessageAdapter()
         binding.messageList.adapter = adapter
-        binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+        binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, true)
 
 
 
@@ -39,7 +39,8 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
                 val choice = Choice(index++, userMessage)
                 messageList.add(choice)
                 viewModel.getPrompt(binding.editText.text.toString())
-                adapter.submitList(messageList)
+                adapter.submitList(messageList.reversed().toMutableList())
+                binding.messageList.scrollToPosition(messageList.size-1)
                 binding.editText.text?.clear()
             }
             else{
@@ -49,7 +50,8 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
         viewModel.chatResponseLiveData.observe(viewLifecycleOwner){ response->
             if(response !=null){
                 messageList.add(response.choices[0])
-                adapter.submitList(messageList)
+                adapter.submitList(messageList.reversed().toMutableList())
+                binding.messageList.scrollToPosition(messageList.size-1)
             }
             else{
                 Toast.makeText(requireContext(), "Response is empty", Toast.LENGTH_SHORT).show()

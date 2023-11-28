@@ -12,10 +12,10 @@
         android:icon="@drawable/baseline_chat_24"
         android:title="Chat"/>
     <item
-        android:id="@+id/notification"
+        android:id="@+id/schedule"
         android:enabled="true"
-        android:icon="@drawable/notification_icon"
-        android:title="Notification">
+        android:icon="@drawable/baseline_schedule_24"
+        android:title="Schedule">
     </item>
 
     <item

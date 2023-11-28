@@ -37,6 +37,9 @@ class WorkoutViewModel @Inject constructor(
             }
         )
     }
+    fun setSortedWorkouts(sortedWorkouts: List<Workout>) {
+        _workoutListLiveData.value = sortedWorkouts
+    }
 
 }
 //    private fun getData() {

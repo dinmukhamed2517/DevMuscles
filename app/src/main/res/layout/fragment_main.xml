@@ -7,15 +7,6 @@
     android:orientation="vertical"
     android:background="@color/main_bg"
     >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:src="@drawable/photo_1"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="20dp"
-        />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

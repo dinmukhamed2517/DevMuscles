@@ -10,6 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/message_list"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/til"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,17 +91,16 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="20dp"
         android:hint="@string/message"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:endIconMode="custom"
         app:endIconMinSize="35dp"
-        style="@style/WhiteTextInput"
         app:endIconScaleType="centerCrop"
-        app:endIconTint="@color/white"
+        app:endIconTint="@color/black"
         app:endIconDrawable="@drawable/baseline_send_24"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconTint="@color/white">
+        app:startIconTint="@color/black">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:inputType="textCapSentences"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

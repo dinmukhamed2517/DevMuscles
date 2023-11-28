@@ -6,7 +6,7 @@
     android:layout_marginTop="15dp"
     android:layout_marginStart="140dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@color/light_grey"
+    android:backgroundTint="@color/card_view_2"
     android:layout_marginHorizontal="10dp"
     app:cardCornerRadius="15dp"
     >

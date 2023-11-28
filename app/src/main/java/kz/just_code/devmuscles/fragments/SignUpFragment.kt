@@ -33,7 +33,7 @@ class SignUpFragment:BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                         if(it.isSuccessful){
                             findNavController().navigate(
-                                R.id.action_sign_up_to_profile
+                                SignUpFragmentDirections.actionSignUpToGenderFragment()
                             )
                         }
                         else{

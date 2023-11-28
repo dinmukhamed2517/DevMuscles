@@ -15,6 +15,12 @@
         <action
             android:id="@+id/action_home_to_workoutDetailsFragment"
             app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_home_to_workoutDetailsBottomSheetFragment"
+            app:destination="@id/workoutDetailsBottomSheetFragment" />
+        <action
+            android:id="@+id/action_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutsFragment"
@@ -23,6 +29,9 @@
         <action
             android:id="@+id/action_workoutsFragment_to_workoutDetailsFragment"
             app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_workoutsFragment_to_workoutDetailsBottomSheetFragment"
+            app:destination="@id/workoutDetailsBottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -40,10 +49,6 @@
         android:name="kz.just_code.devmuscles.fragments.ChatFragment"
         android:label="ChatFragment" />
     <fragment
-        android:id="@+id/notification"
-        android:name="kz.just_code.devmuscles.fragments.NotificationFragment"
-        android:label="NotificationFragment" />
-    <fragment
         android:id="@+id/workoutDetailsFragment"
         android:name="kz.just_code.devmuscles.fragments.WorkoutDetailsFragment"
         android:label="WorkoutDetailsFragment" >
@@ -53,6 +58,15 @@
         <action
             android:id="@+id/action_workoutDetailsFragment_to_fullscreenFragment"
             app:destination="@id/fullscreenFragment" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_workoutDetailsBottomSheetFragment"
+            app:destination="@id/workoutDetailsBottomSheetFragment" />
+        <action
+            android:id="@+id/itself"
+            app:destination="@id/workoutDetailsFragment" />
+        <action
+            android:id="@+id/action_workoutDetailsFragment_to_home"
+            app:destination="@id/home" />
     </fragment>
     <fragment
         android:id="@+id/sign_up"
@@ -64,6 +78,9 @@
         <action
             android:id="@+id/action_sign_up_to_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_sign_up_to_genderFragment"
+            app:destination="@id/genderFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -84,12 +101,90 @@
         android:id="@+id/fullscreenFragment"
         android:name="kz.just_code.devmuscles.fragments.FullscreenFragment"
         android:label="FullscreenFragment" >
-
         <argument
-            android:name="gif_url"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="Workout_item"
+            app:argType="kz.just_code.devmuscles.repository.workout.model.Workout" />
     </fragment>
+    <dialog
+        android:id="@+id/workoutDetailsBottomSheetFragment"
+        android:name="kz.just_code.devmuscles.fragments.WorkoutDetailsBottomSheetFragment"
+        android:label="WorkoutDetailsBottomSheetFragment" >
+        <argument
+            android:name="WorkoutItem"
+            app:argType="kz.just_code.devmuscles.repository.workout.model.Workout" />
+        <action
+            android:id="@+id/action_workoutDetailsBottomSheetFragment_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/ageFragment"
+        android:name="kz.just_code.devmuscles.fragments.AgeFragment"
+        android:label="AgeFragment" >
+        <action
+            android:id="@+id/action_ageFragment_to_heightFragment"
+            app:destination="@id/heightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genderFragment"
+        android:name="kz.just_code.devmuscles.fragments.GenderFragment"
+        android:label="GenderFragment" >
+        <action
+            android:id="@+id/action_genderFragment_to_ageFragment"
+            app:destination="@id/ageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heightFragment"
+        android:name="kz.just_code.devmuscles.fragments.HeightFragment"
+        android:label="HeightFragment" >
+        <action
+            android:id="@+id/action_heightFragment_to_weightFragment"
+            app:destination="@id/weightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weightFragment"
+        android:name="kz.just_code.devmuscles.fragments.WeightFragment"
+        android:label="WeightFragment" >
+
+        <action
+            android:id="@+id/action_weightFragment_to_goalWeightFragment"
+            app:destination="@id/goalWeightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goalFragment"
+        android:name="kz.just_code.devmuscles.fragments.GoalFragment"
+        android:label="GoalFragment" >
+        <action
+            android:id="@+id/action_goalFragment_to_levelFragment"
+            app:destination="@id/levelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelFragment"
+        android:name="kz.just_code.devmuscles.fragments.LevelFragment"
+        android:label="LevelFragment" >
+        <action
+            android:id="@+id/action_levelFragment_to_userInformationFragment"
+            app:destination="@id/userInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInformationFragment"
+        android:name="kz.just_code.devmuscles.fragments.UserInformationFragment"
+        android:label="UserInformationFragment" >
+        <action
+            android:id="@+id/action_userInformationFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/goalWeightFragment"
+        android:name="kz.just_code.devmuscles.fragments.GoalWeightFragment"
+        android:label="GoalWeightFragment" >
+        <action
+            android:id="@+id/action_goalWeightFragment_to_goalFragment"
+            app:destination="@id/goalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/schedule"
+        android:name="kz.just_code.devmuscles.fragments.ScheduleFragment"
+        android:label="ScheduleFragment" />
 
 
 </navigation>

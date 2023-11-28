@@ -17,4 +17,19 @@
     <string name="name">Name</string>
     <string name="save">Save</string>
     <string name="message">Message</string>
+    <string name="other_exercises">Other exercises</string>
+    <string name="ok">Ok</string>
+    <string name="today_s_plane">Today\'s plane</string>
+    <string name="popular_exercises">Popular Exercises</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="next">Next</string>
+    <string name="tell_us_about_yourself">Tell us about yourself!</string>
+    <string name="how_old_are_you">How old are you ?</string>
+    <string name="what_s_your_height">What\'s your height?</string>
+    <string name="what_s_your_weight">What\'s your weight?</string>
+    <string name="what_is_your_goal">What is your goal?</string>
+    <string name="what_is_your_level">What is your level?</string>
+    <string name="let_s_go">Let\'s go</string>
+    <string name="kg">kg</string>
 </resources>
