@@ -1,5 +1,6 @@
 package kz.just_code.devmuscles.fragments
 
+import android.graphics.Color
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint

@@ -18,7 +18,7 @@ class AgeFragment:BaseFragment<FragmentAgeBinding>(FragmentAgeBinding::inflate) 
     override fun onBindView() {
         with(binding){
             numberPicker.maxValue = 100
-            numberPicker.minValue = 0
+            numberPicker.minValue = 18
             numberPicker.wrapSelectorWheel = false
             numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
                 viewModel.age = newVal

@@ -15,7 +15,7 @@
     <color name="chip_color2">#FFD75F</color>
     <color name="chip_color3">#C2D8FB</color>
     <color name="main_color">#f55649</color>
-    <color name="text_color">#FF000000</color>
+    <color name="text_color">#1C1C1E</color>
     <color name="default_color">#FFFFFFFF</color>
 
 </resources>

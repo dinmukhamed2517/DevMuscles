@@ -23,7 +23,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/avatar_placeholder" />
+            android:src="@drawable/baseline_person_24" />
 
     </androidx.cardview.widget.CardView>
 
@@ -32,7 +32,8 @@
     <TextView
         android:id="@+id/textView6"
         style="@style/Integral"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
         android:layout_height="wrap_content"
         android:text="@string/edit_profile"
         android:textAllCaps="true"
@@ -44,21 +45,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/upload_btn"
+    <ImageView
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
-        android:text="Upload"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        />
+        android:layout_marginStart="15dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/til_bio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -68,56 +67,57 @@
         tools:layout_editor_absoluteX="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name"
+            android:id="@+id/et_bio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/name"
+            android:hint="@string/bio"
             android:inputType="textCapSentences"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/til_goalweight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/main_green"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/til_bio"
         tools:layout_editor_absoluteX="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_email"
+            android:id="@+id/et_goal_weight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/email"
-            android:inputType="textCapSentences"
+            android:hint="@string/goal_weight"
+            android:inputType="numberDecimal"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="40dp"
+        android:layout_marginTop="20dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/til_goalweight" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
-        style="@style/Widget.Material3.Button"
+        android:backgroundTint="@color/main_bg"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/save"
-        android:textColor="@color/white"
+        android:textColor="@color/main_green"
         android:textSize="20sp"
         android:layout_marginHorizontal="40dp"
         android:layout_marginBottom="20dp"

@@ -17,7 +17,7 @@ class GoalWeightFragment:BaseFragment<FragmentGoalWeightBinding>(FragmentGoalWei
         super.onBindView()
         with(binding) {
             numberPicker.maxValue = 200
-            numberPicker.minValue = 0
+            numberPicker.minValue = 40
             numberPicker.wrapSelectorWheel = false
             numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
                 viewModel.goalWeight = newVal

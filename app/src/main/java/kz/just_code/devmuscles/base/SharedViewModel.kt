@@ -2,7 +2,6 @@ package kz.just_code.devmuscles.base
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kz.just_code.devmuscles.firebase.Gender
 import kz.just_code.devmuscles.firebase.Goal
 import kz.just_code.devmuscles.firebase.Level
 import javax.inject.Inject

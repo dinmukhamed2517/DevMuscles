@@ -49,6 +49,20 @@ abstract class FRDBWrapper<T> {
         db.getReference(getTableName()).child("favoriteList").setValue(value)
     }
 
+    fun saveProfilePic(value:String){
+        db.getReference(getTableName()).child("pictureUrl").setValue(value)
+    }
+
+
+    fun saveBio(value:String){
+        db.getReference(getTableName()).child("bio").setValue(value)
+    }
+
+    fun saveGoalWeight(value:Int){
+        db.getReference(getTableName()).child("goalWeight").setValue(value)
+
+    }
+
     fun getData() {
         db.getReference(getTableName()).get().addOnSuccessListener {
             _getDataLiveData.postValue(it.getValue(getClassType()))

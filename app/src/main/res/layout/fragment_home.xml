@@ -62,10 +62,11 @@
         app:layout_constraintTop_toTopOf="parent"
         >
         <ImageView
+            android:id="@+id/avatar"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/avatar_placeholder" />
+            android:src="@drawable/baseline_person_24" />
 
     </androidx.cardview.widget.CardView>
 
@@ -106,18 +107,6 @@
         tools:itemCount="1"
         tools:listitem="@layout/item_workout" />
 
-
-    <TextView
-        android:id="@+id/textView14"
-        style="@style/Integral"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:text="@string/today_s_plane"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

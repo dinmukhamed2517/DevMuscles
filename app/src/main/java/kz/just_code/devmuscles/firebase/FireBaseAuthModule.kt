@@ -16,4 +16,9 @@ object FireBaseAuthModule {
         return FirebaseAuth.getInstance()
     }
 
+    @Provides
+    fun provideUserDao(firebaseAuth:FirebaseAuth):UserDao{
+        return UserDao(firebaseAuth)
+    }
+
 }

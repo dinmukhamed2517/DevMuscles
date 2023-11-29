@@ -1,13 +1,18 @@
 package kz.just_code.devmuscles.fragments
 
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.base.SharedViewModel
 import kz.just_code.devmuscles.databinding.FragmentGoalBinding
 import kz.just_code.devmuscles.firebase.Goal
+
 
 
 @AndroidEntryPoint

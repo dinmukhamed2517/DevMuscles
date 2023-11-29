@@ -11,15 +11,12 @@ data class User(
     var goalWeight: Int? = null,
     var goal:Goal? = null,
     var level:Level? = null,
+    var pictureUrl:String? = null,
     var favoriteList:MutableList<SavedWorkout> = mutableListOf()
 ){
 
 
 
-}
-
-enum class Gender{
-    MALE, FEMALE, NOT_SELECTED
 }
 
 enum class Goal{

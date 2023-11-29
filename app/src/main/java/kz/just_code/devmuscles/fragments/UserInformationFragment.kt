@@ -19,13 +19,13 @@ class UserInformationFragment:BaseFragment<FragmentUserInformationBinding>(Fragm
     private val viewModel: SharedViewModel by activityViewModels()
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var userDao: UserDao
+    @Inject
+    lateinit var userDao: UserDao
 
     override var showBottomNavigation: Boolean = false
 
     override fun onBindView() {
         super.onBindView()
-        userDao = UserDao(firebaseAuth)
         var ok = true
         with(binding){
             nextBtn.setOnClickListener {

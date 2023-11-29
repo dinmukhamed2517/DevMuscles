@@ -32,4 +32,10 @@
     <string name="what_is_your_level">What is your level?</string>
     <string name="let_s_go">Let\'s go</string>
     <string name="kg">kg</string>
+    <string name="your_activity">Your activity</string>
+    <string name="upcoming_workouts">Upcoming workouts</string>
+    <string name="bio">Bio</string>
+    <string name="goal_weight">Goal weight</string>
+    <string name="level">Level</string>
+    <string name="intermediate">Intermediate</string>
 </resources>
