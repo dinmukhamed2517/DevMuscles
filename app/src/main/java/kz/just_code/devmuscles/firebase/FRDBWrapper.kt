@@ -46,7 +46,10 @@ abstract class FRDBWrapper<T> {
         }
     }
     fun saveWorkoutToList(value:SavedWorkout){
-        db.getReference(getTableName()).child("favoriteList").setValue(value)
+        val workoutId = db.getReference(getTableName()).push().key
+        if (workoutId != null) {
+            db.getReference(getTableName()).child("favoriteList").child(workoutId).setValue(value)
+        }
     }
 
     fun saveProfilePic(value:String){

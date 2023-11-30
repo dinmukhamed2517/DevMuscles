@@ -1,5 +1,7 @@
 package kz.just_code.devmuscles.firebase
 
+import kz.just_code.devmuscles.repository.workout.model.Workout
+
 
 data class User(
     var name:String? = null,
@@ -12,7 +14,7 @@ data class User(
     var goal:Goal? = null,
     var level:Level? = null,
     var pictureUrl:String? = null,
-    var favoriteList:MutableList<SavedWorkout> = mutableListOf()
+    var favoriteList:Map<String, SavedWorkout> = emptyMap()
 ){
 
 

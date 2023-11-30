@@ -26,7 +26,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
     @Inject  lateinit var firebaseAuth:FirebaseAuth
-    private lateinit var firestore: FirebaseFirestore
     private lateinit var storageReference: StorageReference
 
     @Inject lateinit var userDao: UserDao

@@ -15,6 +15,8 @@ plugins {
 
     //hilt
     id ("dagger.hilt.android.plugin")
+
+
 }
 
 android {
@@ -96,6 +98,8 @@ dependencies {
 
     //lottie
     implementation ("com.airbnb.android:lottie:5.2.0")
+    // horizontal calendar
+
 
     //ok http3
     implementation("com.squareup.okhttp3:okhttp:4.12.0")

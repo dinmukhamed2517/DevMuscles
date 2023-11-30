@@ -4,6 +4,7 @@ package kz.just_code.devmuscles.fragments
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kz.just_code.devmuscles.ItemMessageAdapter
@@ -30,7 +31,9 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
         val adapter = ItemMessageAdapter()
         binding.messageList.adapter = adapter
         binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, true)
-
+        binding.backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
 
         binding.til.setEndIconOnClickListener {

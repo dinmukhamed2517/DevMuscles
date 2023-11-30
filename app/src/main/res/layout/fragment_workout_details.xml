@@ -7,35 +7,57 @@
     android:background="@color/main_bg">
 
 
-    <ImageView
-        android:id="@+id/main_image"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginHorizontal="30dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bodyPart"
-        tools:src="@drawable/girl" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/favorite_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@color/main_bg"
+        android:id="@+id/main_card"
         app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bodyPart">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_favorite" />
+            android:id="@+id/main_image"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop"
 
+            tools:src="@drawable/girl" />
     </androidx.cardview.widget.CardView>
 
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/favorite_btn"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:backgroundTint="@color/main_bg"-->
+<!--        app:cardCornerRadius="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/baseline_schedule_24" />-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:backgroundTint="@color/main_bg"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/baseline_edit_calendar_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/bodyPart"
@@ -45,7 +67,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/favorite_btn"
+        app:layout_constraintEnd_toStartOf="@+id/add_btn"
         app:layout_constraintStart_toEndOf="@+id/back_btn"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Biceps Workout" />
@@ -59,7 +81,7 @@
         android:textColor="@color/text_color"
         android:textSize="20sp"
         android:text="@string/other_exercises"
-        app:layout_constraintTop_toBottomOf="@+id/main_image" />
+        app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"

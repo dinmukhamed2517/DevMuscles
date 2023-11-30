@@ -2,6 +2,7 @@ package kz.just_code.devmuscles.fragments
 
 import android.app.DatePickerDialog
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -27,7 +28,9 @@ import javax.inject.Inject
 class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(FragmentWorkoutDetailsBinding::inflate) {
     private val args: WorkoutDetailsFragmentArgs by navArgs()
     private val viewModel: WorkoutViewModel by activityViewModels<WorkoutViewModel>()
-    private lateinit var userDao: UserDao
+
+    @Inject
+    lateinit var userDao: UserDao
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
 
@@ -40,7 +43,6 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
         super.onBindView()
         val adapter = ItemRecommendedWorkoutAdapter()
         binding.list.adapter = adapter
-        userDao = UserDao(firebaseAuth)
         binding.list.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
@@ -97,7 +99,11 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
                     Log.e("WorkoutDetailsFragment", "error on main thread", e)
                 }
             }
-            favoriteBtn.setOnClickListener {
+
+//            mainCard.setOnClickListener{
+//                showBottomSheet()
+//            }
+            addBtn.setOnClickListener {
                 setUpWorkout(workoutItem)
 
             }
