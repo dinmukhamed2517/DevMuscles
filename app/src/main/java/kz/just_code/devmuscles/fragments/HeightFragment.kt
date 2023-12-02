@@ -1,6 +1,7 @@
 package kz.just_code.devmuscles.fragments
 
 import android.graphics.Color
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,9 +26,15 @@ class HeightFragment:BaseFragment<FragmentHeightBinding>(FragmentHeightBinding::
                 viewModel.height = newVal
             }
             nextBtn.setOnClickListener {
-                findNavController().navigate(
-                    HeightFragmentDirections.actionHeightFragmentToWeightFragment()
-                )
+                if(viewModel.height == null){
+                    Toast.makeText(requireContext(), "Choose the value", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    findNavController().navigate(
+                        HeightFragmentDirections.actionHeightFragmentToWeightFragment()
+                    )
+                }
+
             }
         }
     }

@@ -25,6 +25,7 @@ class ScheduleFragment: BaseFragment<FragmentScheduleBinding>(FragmentScheduleBi
     var workouts:MutableList<Workout> = mutableListOf()
     override fun onBindView() {
         var selectedDate = ""
+        var workoutId = ""
         super.onBindView()
         val adapter = ItemWorkoutAdapter()
         binding.recyclerView.adapter = adapter
@@ -39,11 +40,18 @@ class ScheduleFragment: BaseFragment<FragmentScheduleBinding>(FragmentScheduleBi
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
+        adapter.itemClick = { workout, map ->
+            userDao.changeCompleteStatus(value = true, workoutId)
+            findNavController().navigate(
+                ScheduleFragmentDirections.actionScheduleToStartWorkoutFragment(workout)
+            )
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         userDao.getDataLiveData.observe(this){
             val workoutMap = it?.favoriteList
             workoutMap?.forEach {item->
                 if(item.value.savedTime == selectedDate) {
+                    workoutId = item.key
                     workouts.add(item.value.workout)
                 }
             }

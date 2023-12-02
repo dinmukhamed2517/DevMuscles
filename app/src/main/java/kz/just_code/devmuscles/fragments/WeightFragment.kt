@@ -1,5 +1,6 @@
 package kz.just_code.devmuscles.fragments
 
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,9 +25,15 @@ class WeightFragment:BaseFragment<FragmentWeightBinding>(FragmentWeightBinding::
                 viewModel.weight = newVal
             }
             nextBtn.setOnClickListener {
-                findNavController().navigate(
-                    WeightFragmentDirections.actionWeightFragmentToGoalWeightFragment()
-                )
+                if(viewModel.weight == null){
+                    Toast.makeText(requireContext(), "Choose the value", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    findNavController().navigate(
+                        WeightFragmentDirections.actionWeightFragmentToGoalWeightFragment()
+                    )
+                }
+
             }
         }
     }

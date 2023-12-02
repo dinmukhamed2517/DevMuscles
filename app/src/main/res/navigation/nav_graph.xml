@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/home">
+    app:startDestination="@id/splashFragment">
 
 
     <fragment
@@ -184,7 +184,44 @@
     <fragment
         android:id="@+id/schedule"
         android:name="kz.just_code.devmuscles.fragments.ScheduleFragment"
-        android:label="ScheduleFragment" />
+        android:label="ScheduleFragment" >
+        <action
+            android:id="@+id/action_schedule_to_startWorkoutFragment"
+            app:destination="@id/startWorkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startWorkoutFragment"
+        android:name="kz.just_code.devmuscles.fragments.StartWorkoutFragment"
+        android:label="StartWorkoutFragment" >
+        <argument
+            android:name="workoutItem"
+            app:argType="kz.just_code.devmuscles.repository.workout.model.Workout" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="kz.just_code.devmuscles.onboarding.ViewPagerFragment"
+        android:label="ViewPagerFragment" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="kz.just_code.devmuscles.onboarding.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 
 </navigation>

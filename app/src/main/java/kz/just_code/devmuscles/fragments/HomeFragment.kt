@@ -45,10 +45,15 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         }
         userDao.getDataLiveData.observe(this){
             binding.greating.text = "Hello, ${it?.name}"
-            Glide.with(requireContext())
-                .load(it?.pictureUrl)
-                .into(binding.avatar)
 
+            if(it?.pictureUrl !=null){
+                Glide.with(requireContext())
+                    .load(it?.pictureUrl)
+                    .into(binding.avatar)
+            }
+            else{
+                binding.avatar.setImageResource(R.drawable.baseline_person_24)
+            }
         }
         binding.seeAllBtn.setOnClickListener {
             findNavController().navigate(

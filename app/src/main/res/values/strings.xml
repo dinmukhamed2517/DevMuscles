@@ -39,4 +39,9 @@
     <string name="level">Level</string>
     <string name="intermediate">Intermediate</string>
     <string name="your_scheduled_workouts">Your scheduled Workouts</string>
+    <string name="tell_about_yourself">Tell about yourself</string>
+    <string name="similar_exercises">Similar exercises</string>
+    <string name="start">Start</string>
+    <string name="you_don_t_have_any_workouts_today">You don\'t have any workouts today</string>
+    <string name="profile">Profile</string>
 </resources>

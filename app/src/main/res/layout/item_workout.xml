@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:elevation="12dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/biceps_nobg"
+                android:src="@drawable/girl1_nobg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/title"

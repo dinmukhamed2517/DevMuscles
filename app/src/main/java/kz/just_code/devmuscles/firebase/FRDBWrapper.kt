@@ -56,6 +56,10 @@ abstract class FRDBWrapper<T> {
         db.getReference(getTableName()).child("pictureUrl").setValue(value)
     }
 
+    fun changeCompleteStatus(value:Boolean, workoutId:String){
+        db.getReference(getTableName()).child("favoriteList").child(workoutId).child("completed").setValue(value)
+    }
+
 
     fun saveBio(value:String){
         db.getReference(getTableName()).child("bio").setValue(value)

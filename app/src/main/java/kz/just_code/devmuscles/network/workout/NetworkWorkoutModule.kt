@@ -24,7 +24,7 @@ object NetworkWorkoutModule {
         .addInterceptor{chain ->
             val request = chain.request()
                 .newBuilder()
-                .addHeader("X-RapidAPI-Key", "a351295f96msh08038ec460f6ce1p1a31c2jsn90bf79510751")
+                .addHeader("X-RapidAPI-Key", "c92e681a4bmsh271a014ff49b4edp1e3c55jsn678844079787")
                 .addHeader("X-RapidAPI-Host","exercisedb.p.rapidapi.com")
                 .build()
                 chain.proceed(request)

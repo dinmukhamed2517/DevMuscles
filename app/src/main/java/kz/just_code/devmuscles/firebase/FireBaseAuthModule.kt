@@ -1,6 +1,8 @@
 package kz.just_code.devmuscles.firebase
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +21,11 @@ object FireBaseAuthModule {
     @Provides
     fun provideUserDao(firebaseAuth:FirebaseAuth):UserDao{
         return UserDao(firebaseAuth)
+    }
+
+    @Provides
+    fun provideStorageRef(firebaseAuth: FirebaseAuth):StorageReference{
+        return FirebaseStorage.getInstance().getReference("Users/"+"${firebaseAuth.currentUser?.uid}")
     }
 
 }

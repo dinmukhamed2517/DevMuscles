@@ -108,6 +108,13 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
 
+    //Circular progress bar
+    implementation ("com.mikhaellopez:circularprogressbar:3.1.0")
+
+    //Splash screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.activity:activity-ktx:1.8.0")

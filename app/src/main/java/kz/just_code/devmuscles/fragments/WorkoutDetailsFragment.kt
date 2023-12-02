@@ -2,6 +2,7 @@ package kz.just_code.devmuscles.fragments
 
 import android.app.DatePickerDialog
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -51,7 +52,7 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
             var imageRes: Int? = null
             when (workoutItem.target) {
                 "abs" -> {
-                    imageRes = R.drawable.girl1
+                    imageRes = R.drawable.first
                 }
 
                 "delts" -> {
@@ -83,6 +84,10 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
                     imageRes = R.drawable.lats
                 }
 
+                "glutes" -> {
+                    imageRes = R.drawable.girl1
+                }
+
                 else -> {
                     imageRes = R.drawable.the_rest
 
@@ -99,10 +104,6 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
                     Log.e("WorkoutDetailsFragment", "error on main thread", e)
                 }
             }
-
-//            mainCard.setOnClickListener{
-//                showBottomSheet()
-//            }
             addBtn.setOnClickListener {
                 setUpWorkout(workoutItem)
 
@@ -142,7 +143,7 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
             selectedDate.set(year, month, day)
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val pickedDate = dateFormat.format(selectedDate.time)
-            userDao.saveWorkoutToList(SavedWorkout(value, pickedDate))
+            userDao.saveWorkoutToList(SavedWorkout(value, pickedDate,  false))
             showCustomDialog("Success", "Workout is scheduled")
 
         },

@@ -19,7 +19,9 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
 
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var storageReference: StorageReference
+
+    @Inject
+    lateinit var storageReference: StorageReference
     private var imageUri: Uri? = null
 
     @Inject
@@ -66,7 +68,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
                     val imgUrl = uri.toString()
                     userDao.saveProfilePic(imgUrl)
                     binding.loading.isVisible = false
-                    showCustomDialog("Success", "Picture saved")
+                    showCustomDialog("Success", "Information saved")
 
                 }
 

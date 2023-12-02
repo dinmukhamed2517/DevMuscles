@@ -11,6 +11,7 @@ import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
 import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
 import kz.just_code.devmuscles.fragments.titlecaseFirstChar
 import kz.just_code.devmuscles.repository.workout.model.Workout
+import kz.just_code.devmuscles.utilities.dp
 
 class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
@@ -57,11 +58,13 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                 var color:Int? = null
                 var chipColor:Int? = null
                 var imageRes:Int? = null
+                var padding:Int = 0
                 when (item.target) {
                     "abs" -> {
-                        imageRes = R.drawable.girl1_nobg
+                        imageRes = R.drawable.ob_2
                         color = R.color.card_view_1
                         chipColor = R.color.chip_color1
+                        padding = 200
                     }
                     "delts" -> {
                         imageRes = R.drawable.nobg_girl
@@ -101,6 +104,11 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                         color = R.color.card_view_3
                         chipColor = R.color.chip_color3
                     }
+                    "glutes"->{
+                        imageRes = R.drawable.girl1_nobg
+                        color = R.color.card_view_3
+                        chipColor = R.color.chip_color3
+                    }
                     else -> {
                         imageRes=R.drawable.the_rest_nobg
                         color = R.color.card_view_1
@@ -110,9 +118,9 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                 }
                 image.setImageResource(imageRes)
                 image.transitionName = "image_${item.id}"
+                image.setPadding(0, padding, 0, 0)
                 root.setCardBackgroundColor(ContextCompat.getColor(root.context, color ))
                 type.setChipBackgroundColorResource(chipColor)
-
 
             }
             itemView.setOnClickListener {
@@ -125,4 +133,5 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
         }
     }
 }
+
 
