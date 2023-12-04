@@ -5,9 +5,11 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.ItemWorkoutAdapter
+import kz.just_code.devmuscles.adapter.ItemWorkoutAdapter
+import kz.just_code.devmuscles.adapter.ScheduleAdapter
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentScheduleBinding
+import kz.just_code.devmuscles.firebase.SavedWorkout
 import kz.just_code.devmuscles.firebase.UserDao
 import kz.just_code.devmuscles.repository.workout.model.Workout
 import java.text.SimpleDateFormat
@@ -22,12 +24,12 @@ class ScheduleFragment: BaseFragment<FragmentScheduleBinding>(FragmentScheduleBi
 
     @Inject
     lateinit var userDao:UserDao
-    var workouts:MutableList<Workout> = mutableListOf()
+    var workouts:MutableList<SavedWorkout> = mutableListOf()
     override fun onBindView() {
         var selectedDate = ""
         var workoutId = ""
         super.onBindView()
-        val adapter = ItemWorkoutAdapter()
+        val adapter = ScheduleAdapter()
         binding.recyclerView.adapter = adapter
 
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -40,10 +42,10 @@ class ScheduleFragment: BaseFragment<FragmentScheduleBinding>(FragmentScheduleBi
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
-        adapter.itemClick = { workout, map ->
+        adapter.itemClick = { it ->
             userDao.changeCompleteStatus(value = true, workoutId)
             findNavController().navigate(
-                ScheduleFragmentDirections.actionScheduleToStartWorkoutFragment(workout)
+                ScheduleFragmentDirections.actionScheduleToStartWorkoutFragment(it.workout)
             )
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -52,7 +54,7 @@ class ScheduleFragment: BaseFragment<FragmentScheduleBinding>(FragmentScheduleBi
             workoutMap?.forEach {item->
                 if(item.value.savedTime == selectedDate) {
                     workoutId = item.key
-                    workouts.add(item.value.workout)
+                    workouts.add(item.value)
                 }
             }
                 if(workouts.isEmpty()){

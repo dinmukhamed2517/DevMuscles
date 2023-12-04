@@ -1,17 +1,17 @@
-package kz.just_code.devmuscles
+package kz.just_code.devmuscles.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
 import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
 import kz.just_code.devmuscles.fragments.titlecaseFirstChar
 import kz.just_code.devmuscles.repository.workout.model.Workout
-import kz.just_code.devmuscles.utilities.dp
 
 class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
@@ -59,6 +59,7 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                 var chipColor:Int? = null
                 var imageRes:Int? = null
                 var padding:Int = 0
+                completed.isVisible = false
                 when (item.target) {
                     "abs" -> {
                         imageRes = R.drawable.ob_2
@@ -110,7 +111,7 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                         chipColor = R.color.chip_color3
                     }
                     else -> {
-                        imageRes=R.drawable.the_rest_nobg
+                        imageRes= R.drawable.the_rest_nobg
                         color = R.color.card_view_1
                         chipColor = R.color.chip_color1
 

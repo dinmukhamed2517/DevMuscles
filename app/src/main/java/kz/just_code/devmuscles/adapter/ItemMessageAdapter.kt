@@ -1,4 +1,4 @@
-package kz.just_code.devmuscles
+package kz.just_code.devmuscles.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

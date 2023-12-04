@@ -8,4 +8,6 @@
         >
         <item name="colorPrimary">@color/black</item>
     </style>
+
+    <style name="ScreenBackground"><item name="background">@color/main_bg</item></style>
 </resources>

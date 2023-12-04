@@ -59,7 +59,7 @@
             android:textColor="@color/text_color"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/add_btn"
-            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintStart_toEndOf="@+id/back_btn_layout"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Biceps Workout" />
 
@@ -85,15 +85,26 @@
             app:layout_constraintTop_toBottomOf="@+id/textView13"
             tools:listitem="@layout/item_recommended_workout" />
 
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/back_btn_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/baseline_arrow_back_ios_24"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyPart"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bodyPart" />
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

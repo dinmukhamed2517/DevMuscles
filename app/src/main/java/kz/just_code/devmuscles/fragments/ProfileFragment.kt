@@ -66,6 +66,7 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             binding.username.text = it?.name
             binding.weight.text = it?.weight.toString()
             binding.height.text = it?.height.toString()
+            binding.bio.text = it?.bio
             if(it?.pictureUrl !=null){
                 Glide.with(requireContext())
                     .load(it?.pictureUrl)
@@ -116,7 +117,7 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
 
     private fun signOut(){
         var alertDialog: AlertDialog? = null
-        alertDialog = MaterialAlertDialogBuilder(requireContext())
+        alertDialog = MaterialAlertDialogBuilder(requireContext(), )
             .setTitle("Sign out")
             .setMessage("Are you sure you want to sign out?")
             .setPositiveButton("Yes") { _, _ ->

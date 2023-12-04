@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/see_all_btn"
         android:layout_width="50dp"
-        android:backgroundTint="@color/default_color"
+        android:backgroundTint="@color/white"
         android:layout_height="50dp"
         android:elevation="12dp"
         android:layout_marginEnd="10dp"
@@ -22,13 +22,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_search"
             android:scaleType="fitCenter"
             android:layout_gravity="center"
-
             />
     </androidx.cardview.widget.CardView>
 
@@ -38,7 +36,7 @@
         android:id="@+id/greating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
 
         android:textStyle="bold"
         android:textSize="18sp"
@@ -54,7 +52,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/default_color"
+        android:backgroundTint="@color/white"
         android:elevation="12dp"
         android:thicknessRatio="1.9"
         app:cardCornerRadius="40dp"
@@ -72,7 +70,7 @@
 
     <TextView
         android:id="@+id/data"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,18 +81,16 @@
 
 
     <TextView
-        android:textColor="@color/black"
         android:id="@+id/textView4"
+        style="@style/Integral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Integral"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginHorizontal="30dp"
         android:text="@string/popular_exercises"
+        android:textColor="@color/text_color"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:layout_editor_absoluteX="10dp" />
-
+        app:layout_constraintTop_toBottomOf="@+id/adList" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -102,10 +98,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:itemCount="1"
         tools:listitem="@layout/item_workout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adList"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        tools:itemCount="1"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_advertisement"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
 
 
 

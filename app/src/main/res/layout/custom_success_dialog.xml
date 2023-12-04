@@ -9,7 +9,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/default_color"
+        android:backgroundTint="@color/main_bg"
         app:cardCornerRadius="20dp">
 
 

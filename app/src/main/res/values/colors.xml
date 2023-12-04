@@ -17,5 +17,6 @@
     <color name="main_color">#f55649</color>
     <color name="text_color">#1C1C1E</color>
     <color name="default_color">#FFFFFFFF</color>
+    <color name="royal_blue">#4169e1</color>
 
 </resources>

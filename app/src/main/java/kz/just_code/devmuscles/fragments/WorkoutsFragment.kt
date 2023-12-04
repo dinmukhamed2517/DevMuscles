@@ -12,7 +12,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.ItemWorkoutAdapter
+import kz.just_code.devmuscles.adapter.ItemWorkoutAdapter
 import kz.just_code.devmuscles.repository.workout.WorkoutViewModel
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentWorkoutsBinding

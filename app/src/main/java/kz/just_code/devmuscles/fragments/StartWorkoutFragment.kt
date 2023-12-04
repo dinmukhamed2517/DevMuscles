@@ -28,7 +28,7 @@ class StartWorkoutFragment:BaseFragment<FragmentStartworkoutBinding>(FragmentSta
             Glide.with(requireContext())
                 .load(args.workoutItem.gifUrl)
                 .into(gif)
-
+            instructions.text = args.workoutItem.instructions?.joinToString(separator = " ")
         }
     }
 

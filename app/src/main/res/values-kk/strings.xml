@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DevMuscles</string>
+    <string name="description_placeholder">Want your body to be healthy. Join our program with directions according to body’s goals. Increasing physical strength is the goal of strenght training. Maintain body fitness by doing physical exercise at least 2-3 times a week.</string>
+    <string name="workout_categories">Жаттығу санаттары</string>
+    <string name="search">Search</string>
+    <string name="login">Логин</string>
+    <string name="email">Электрондық пошта</string>
+    <string name="password">Құпия сөз</string>
+    <string name="sign_up">Тіркелу</string>
+    <string name="registration">Тіркеу</string>
+    <string name="password_again">Қайталаңыз</string>
+    <string name="sign_out">Шығу</string>
+    <string name="edit_profile">Профильді өңдеу</string>
+    <string name="name">Аты</string>
+    <string name="save">Сақтау</string>
+    <string name="message">Хабар</string>
+    <string name="ok">Жарайды</string>
+    <string name="today_s_plane">Бүгінгі жоспар</string>
+    <string name="popular_exercises">Танымал жаттығулар</string>
+    <string name="next">Келесі</string>
+    <string name="tell_us_about_yourself">Өзіңіз туралы айтыңыз!</string>
+    <string name="how_old_are_you">Сіз неше жастасыз?</string>
+    <string name="what_s_your_height">Сіздің бойыңыз қандай?</string>
+    <string name="what_s_your_weight">Сіздің салмағыңыз қандай?</string>
+    <string name="what_is_your_goal">Сіздің мақсатыңыз қандай?</string>
+    <string name="what_is_your_level">Сіздің деңгейіңіз қандай?</string>
+    <string name="let_s_go">Кеттік</string>
+    <string name="kg">кг</string>
+    <string name="your_activity">Сіздің белсендігіңіз</string>
+    <string name="bio">Bio</string>
+    <string name="goal_weight">Мақсат салмағыныз</string>
+    <string name="level">Деңгей</string>
+    <string name="intermediate">Орташа</string>
+    <string name="your_scheduled_workouts">Сіздің жоспарланған жаттығуларыңыз</string>
+    <string name="similar_exercises">Ұксас жаттығулар</string>
+    <string name="start">Бастау</string>
+    <string name="you_don_t_have_any_workouts_today">Сізде бүгін жаттығу жоқ</string>
+    <string name="profile">Профиль</string>
+    <string name="chat_fragment">Бұл сіздің виртуалды жаттықтырушыңыз. Кез келген сұрақ қойыңыз</string>
+    <string name="cals_daily">Күнделікті калория</string>
+    <string name="target">Мақсаты</string>
+    <string name="equipment">Жабдық</string>
+    <string name="focus_on_training">Жаттығуға мән берініз</string>
+    <string name="maximize_your_time_training_by_focusing_on_the_foundational_elements_that_bring_you_long_term_success">Сізге ұзақ мерзімді табыс әкелетін негізгі элементтерге назар аудара жаттығып, жаттығу уақытын барынша арттырыңыз</string>
+    <string name="skip">Өткізіп жіберу</string>
+    <string name="use_comfortable_chat_with_your_personal_trainer_to_reach_your_goals">Мақсаттарыңызға жету үшін жеке жаттықтырушымен ыңғайлы чатты пайдаланыңыз</string>
+    <string name="virtual_trainer">Виртуалды жаттықтырушы</string>
+    <string name="sport_and_fitness">Спорт және фитнес</string>
+    <string name="enjoy_your_training_with_mix_of_sports_and_fitness">Спорт пен фитнесті үйлестіре отырып, жаттығудан ләззат алыңыз.</string>
+    <string name="finish">Аяқтау</string>
+</resources>
+

@@ -9,25 +9,52 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/message_list"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="5dp"
         app:layout_constraintBottom_toTopOf="@+id/til"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/back_btn_layout"
         app:layout_constraintVertical_weight="1"
         tools:itemCount="2"
         tools:listitem="@layout/item_message_trainer" />
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/hello"
+        style="@style/Integral"
+        android:visibility="visible"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/baseline_arrow_back_ios_24"
+        android:text="@string/chat_fragment"
+        android:textColor="@color/text_color"
+        android:layout_marginHorizontal="50dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/message_list"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/back_btn_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            />
+    </androidx.cardview.widget.CardView>
 
 
 
@@ -102,16 +129,16 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="20dp"
         android:hint="@string/message"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/text_color"
         app:endIconMode="custom"
         app:endIconMinSize="35dp"
         app:endIconScaleType="centerCrop"
-        app:endIconTint="@color/black"
+        app:endIconTint="@color/text_color"
         app:endIconDrawable="@drawable/baseline_send_24"
-        app:hintTextColor="@color/black"
+        app:hintTextColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:startIconTint="@color/black">
+        app:startIconTint="@color/text_color">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -119,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:inputType="textCapSentences"
-            android:textColor="@color/black" />
+            android:textColor="@color/text_color" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

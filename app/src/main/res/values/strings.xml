@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">DevMuscles</string>
     <string name="description_placeholder">Want your body to be healthy. Join our program with directions according to body’s goals. Increasing physical strength is the goal of strenght training. Maintain body fitness by doing physical exercise at least 2-3 times a week.</string>
-    <string name="workout_categories">Workout Categories</string>
-    <string name="see_all">See all</string>
+    <string name="workout_categories">Workout categories</string>
     <string name="search">Search</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
@@ -12,17 +11,12 @@
     <string name="password_again">Password again</string>
     <string name="sign_out">Sign out</string>
     <string name="edit_profile">Edit profile</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="settings">Settings</string>
     <string name="name">Name</string>
     <string name="save">Save</string>
     <string name="message">Message</string>
-    <string name="other_exercises">Other exercises</string>
     <string name="ok">Ok</string>
     <string name="today_s_plane">Today\'s plane</string>
     <string name="popular_exercises">Popular Exercises</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
     <string name="next">Next</string>
     <string name="tell_us_about_yourself">Tell us about yourself!</string>
     <string name="how_old_are_you">How old are you ?</string>
@@ -33,15 +27,25 @@
     <string name="let_s_go">Let\'s go</string>
     <string name="kg">kg</string>
     <string name="your_activity">Your activity</string>
-    <string name="upcoming_workouts">Upcoming workouts</string>
     <string name="bio">Bio</string>
     <string name="goal_weight">Goal weight</string>
     <string name="level">Level</string>
     <string name="intermediate">Intermediate</string>
     <string name="your_scheduled_workouts">Your scheduled Workouts</string>
-    <string name="tell_about_yourself">Tell about yourself</string>
     <string name="similar_exercises">Similar exercises</string>
     <string name="start">Start</string>
     <string name="you_don_t_have_any_workouts_today">You don\'t have any workouts today</string>
     <string name="profile">Profile</string>
+    <string name="chat_fragment">This is the chat with your virtual trainer. Ask any questions</string>
+    <string name="cals_daily">cals daily</string>
+    <string name="target">Target</string>
+    <string name="equipment">Equipment</string>
+    <string name="focus_on_training">Focus on training</string>
+    <string name="maximize_your_time_training_by_focusing_on_the_foundational_elements_that_bring_you_long_term_success">Maximize your time training by focusing on the foundational elements that bring you long term success</string>
+    <string name="skip">Skip</string>
+    <string name="use_comfortable_chat_with_your_personal_trainer_to_reach_your_goals">Use comfortable chat with your personal trainer to reach your goals</string>
+    <string name="virtual_trainer">Virtual Trainer</string>
+    <string name="sport_and_fitness">Sport and fitness</string>
+    <string name="enjoy_your_training_with_mix_of_sports_and_fitness">Enjoy your training with mix of sports and fitness.</string>
+    <string name="finish">Finish</string>
 </resources>

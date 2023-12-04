@@ -1,15 +1,12 @@
-package kz.just_code.devmuscles
+package kz.just_code.devmuscles.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import kz.just_code.devmuscles.base.BaseWorkoutViewHolder
 import kz.just_code.devmuscles.databinding.ItemRecommendedWorkoutBinding
-import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
 import kz.just_code.devmuscles.fragments.titlecaseFirstChar
 import kz.just_code.devmuscles.repository.workout.model.Workout
 

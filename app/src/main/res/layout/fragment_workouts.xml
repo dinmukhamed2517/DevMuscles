@@ -11,15 +11,16 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="15dp"
         android:hint="Enter target muscle"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/text_color"
         app:endIconMode="clear_text"
-        app:endIconTint="@color/black"
-        app:hintTextColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:endIconTint="@color/text_color"
+        app:hintTextColor="@color/text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back_btn_layout"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -28,32 +29,42 @@
             android:layout_height="match_parent"
             android:imeOptions="actionSearch"
             android:inputType="textCapSentences"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/baseline_arrow_back_ios_24"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/back_btn_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+    </androidx.cardview.widget.CardView>
 
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
-        android:foregroundGravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:singleLine="true"
-        app:singleSelection="true"
+        android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:singleLine="true"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/name_chip"
@@ -61,8 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:text="@string/name"
-            />
+            android:text="@string/name" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/target_chip"
@@ -72,8 +82,7 @@
 
             android:layout_height="wrap_content"
 
-            android:text="Target"
-            />
+            android:text="@string/target" />
 
 
         <com.google.android.material.chip.Chip
@@ -82,12 +91,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
-            android:text="Equipment"
-            />
+            android:text="@string/equipment" />
 
 
     </com.google.android.material.chip.ChipGroup>
-
 
     <ProgressBar
         android:id="@+id/loading"

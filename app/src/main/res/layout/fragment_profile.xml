@@ -11,14 +11,14 @@
         android:id="@+id/cardView"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:backgroundTint="@color/default_color"
+        android:backgroundTint="@color/white"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:elevation="12dp"
         android:thicknessRatio="1.9"
         app:cardCornerRadius="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_btn">
+        app:layout_constraintTop_toBottomOf="@+id/back_btn_layout">
 
         <ImageView
             android:id="@+id/avatar"
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
         style="@style/Integral"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
@@ -56,7 +56,7 @@
 
 
     <TextView
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,18 +65,32 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/settings_btn"
         app:layout_constraintEnd_toStartOf="@+id/settings_btn"
-        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintStart_toEndOf="@+id/back_btn_layout"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/baseline_arrow_back_ios_24"
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/back_btn_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            />
+    </androidx.cardview.widget.CardView>
+
 
 
     <androidx.cardview.widget.CardView
@@ -181,8 +195,8 @@
         android:layout_height="40dp"
         android:elevation="12dp"
         android:backgroundTint="@color/white"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:thicknessRatio="1.9"
         app:cardCornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -224,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:text="@string/level"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="30dp"
                 android:textColor="@color/default_color"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -239,7 +253,7 @@
                 tools:text="@string/intermediate"
                 android:textColor="@color/default_color"
                 android:textSize="20sp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="30dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -341,47 +355,36 @@
                 android:id="@+id/no_workout_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/you_don_t_have_any_workouts_today"
                 android:textColor="@color/text_color"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/your_activity" />
 
-            <TextView
-                android:id="@+id/textView11"
-                style="@style/Integral"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Calories"
-                android:textColor="@color/text_color"
-                android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
-                tools:layout_editor_absoluteX="10dp" />
 
             <TextView
                 android:id="@+id/dailyCalories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
                 android:textColor="@color/text_color"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
                 tools:text="2500" />
 
             <TextView
                 style="@style/Integral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cals daily"
+                android:textColor="@color/text_color"
+                android:text="@string/cals_daily"
                 app:layout_constraintBottom_toBottomOf="@+id/dailyCalories"
                 app:layout_constraintStart_toEndOf="@+id/dailyCalories"
                 app:layout_constraintTop_toTopOf="@+id/dailyCalories" />

@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.ItemWorkoutAdapter
+import kz.just_code.devmuscles.adapter.ItemWorkoutAdapter
 import kz.just_code.devmuscles.R
+import kz.just_code.devmuscles.adapter.AdAdapter
 import kz.just_code.devmuscles.repository.workout.WorkoutViewModel
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentHomeBinding
 import kz.just_code.devmuscles.firebase.UserDao
+import kz.just_code.devmuscles.utilities.AdDao
 import java.text.SimpleDateFormat
 import java.util.Date
 import javax.inject.Inject
@@ -30,6 +32,7 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         userDao.getData()
         super.onBindView()
         val adapter = ItemWorkoutAdapter()
+        val adAdapter = AdAdapter()
 
         viewModel.getWorkouts()
         with(binding){
@@ -41,6 +44,10 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
             viewModel.workoutListLiveData.observe(viewLifecycleOwner){
                 adapter.submitList(it.orEmpty())
             }
+            adList.adapter = adAdapter
+            adList.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adAdapter.submitList(getAds())
 
         }
         userDao.getDataLiveData.observe(this){
@@ -78,5 +85,13 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
                 HomeFragmentDirections.actionHomeToLoginFragment()
             )
         }
+    }
+
+    private fun getAds():List<AdDao>{
+        return listOf(
+            AdDao(1, "Buy sport supplements", "10% discount", R.drawable.ad_1),
+            AdDao(2, "Buy sport appliance", "0-0-12", R.drawable.ad_2),
+
+        )
     }
 }

@@ -2,8 +2,6 @@ package kz.just_code.devmuscles.fragments
 
 import android.app.DatePickerDialog
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -11,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.ItemRecommendedWorkoutAdapter
+import kz.just_code.devmuscles.adapter.ItemRecommendedWorkoutAdapter
 import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentWorkoutDetailsBinding
@@ -113,6 +111,9 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
                     WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToHome()
                 )
             }
+            mainCard.setOnClickListener {
+                showBottomSheet()
+            }
             adapter.itemClick = {
                 findNavController().navigate(
                     WorkoutDetailsFragmentDirections.itself(it)
@@ -120,7 +121,6 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
             }
 
         }
-        showBottomSheet()
         sharedElementEnterTransition =
             TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
         viewModel.workoutListLiveData.observe(viewLifecycleOwner) {

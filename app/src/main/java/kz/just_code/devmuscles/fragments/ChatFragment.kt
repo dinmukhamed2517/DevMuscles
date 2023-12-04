@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.ItemMessageAdapter
+import kz.just_code.devmuscles.adapter.ItemMessageAdapter
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentChatBinding
 import kz.just_code.devmuscles.repository.gpt.GptViewModel
@@ -25,9 +25,6 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
 
     override fun onBindView() {
         super.onBindView()
-//        setUpLoader()
-
-//        binding.animation.playAnimation()
         val adapter = ItemMessageAdapter()
         binding.messageList.adapter = adapter
         binding.messageList.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, true)
@@ -35,8 +32,9 @@ class ChatFragment:BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflat
             findNavController().popBackStack()
         }
 
-
         binding.til.setEndIconOnClickListener {
+            binding.hello.isVisible = false
+            binding.messageList.isVisible = true
             if(binding.editText.text.toString().isNotEmpty()){
                 val userMessage = Message("user", "${binding.editText.text.toString()}")
                 val choice = Choice(index++, userMessage)
