@@ -38,6 +38,7 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
 
 
     override fun onBindView() {
+        showBottomSheet()
         val workoutItem = args.workout
         super.onBindView()
         val adapter = ItemRecommendedWorkoutAdapter()

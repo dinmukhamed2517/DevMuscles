@@ -35,7 +35,10 @@ class LoginFragment:BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inf
                         )
                     }
                     else{
-                        Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        binding.emailLayout.isErrorEnabled = true
+                        binding.passwordLayout.isErrorEnabled = true
+                        binding.passwordLayout.error = "Something is wrong"
+                        binding.emailLayout.error = "Something is wrong"
                     }
                 }
             }

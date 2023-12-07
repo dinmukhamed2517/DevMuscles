@@ -32,12 +32,18 @@ class SignUpFragment:BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::
                 if(password == confirmPassword){
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                         if(it.isSuccessful){
+                            binding.emailLayout.isErrorEnabled = false
                             findNavController().navigate(
                                 SignUpFragmentDirections.actionSignUpToGenderFragment()
                             )
                         }
                         else{
-                            Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            binding.emailLayout.isErrorEnabled = true
+                            binding.passwordConfLayout.isErrorEnabled = true
+                            binding.passwordLayout.isErrorEnabled = true
+                            binding.passwordConfLayout.error = "Something is wrong"
+                            binding.passwordLayout.error = "Something is wrong"
+                            binding.emailLayout.error = "Something is wrong"
                         }
                     }
 
