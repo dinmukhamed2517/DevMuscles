@@ -11,10 +11,9 @@ import javax.inject.Inject
 
 class GptRepositoryImpl @Inject constructor(
     private val api: GptApi
-):GptRepository{
+) : GptRepository {
 
 
-    private var choiceList:MutableList<Choice> = mutableListOf()
 
     private val _choicesLiveData = MutableLiveData<Choice>()
     override val choiceLiveData: LiveData<Choice>? = _choicesLiveData
@@ -36,7 +35,7 @@ class GptRepositoryImpl @Inject constructor(
             ),
         )
         val response = api.getPrompt(requestBody)
-        return if(response.isSuccessful) response.body()
+        return if (response.isSuccessful) response.body()
         else throw Exception(response.message())
     }
 

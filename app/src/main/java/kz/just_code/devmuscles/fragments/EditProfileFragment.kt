@@ -15,7 +15,8 @@ import kz.just_code.devmuscles.firebase.UserDao
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEditProfileBinding::inflate) {
+class EditProfileFragment :
+    BaseFragment<FragmentEditProfileBinding>(FragmentEditProfileBinding::inflate) {
 
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
@@ -25,8 +26,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
     private var imageUri: Uri? = null
 
     @Inject
-    lateinit var userDao:UserDao
-
+    lateinit var userDao: UserDao
 
 
     override var showBottomNavigation: Boolean = false
@@ -47,7 +47,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
             }
             saveBtn.setOnClickListener {
                 binding.loading.isVisible = true
-                if(imageUri != null){
+                if (imageUri != null) {
                     uploadProfilePic()
                 }
                 updateProfileInfo()
@@ -56,15 +56,16 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
     }
 
     private val resultLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent()){
-            binding.avatar.setImageURI(it)
-            imageUri = it
+        ActivityResultContracts.GetContent()
+    ) {
+        binding.avatar.setImageURI(it)
+        imageUri = it
     }
 
-    private fun uploadProfilePic(){
+    private fun uploadProfilePic() {
         imageUri?.let {
-            storageReference.putFile(it).addOnSuccessListener {task->
-                task.metadata?.reference?.downloadUrl?.addOnSuccessListener {uri->
+            storageReference.putFile(it).addOnSuccessListener { task ->
+                task.metadata?.reference?.downloadUrl?.addOnSuccessListener { uri ->
                     val imgUrl = uri.toString()
                     userDao.saveProfilePic(imgUrl)
                     binding.loading.isVisible = false
@@ -73,26 +74,26 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEdi
                 }
 
 
-            }.addOnFailureListener{
-                Toast.makeText(requireContext(), "Unable to upload profile pic", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "Unable to upload profile pic", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
-    private fun updateProfileInfo(){
-        if(binding.etBio.text?.isNotEmpty() == true){
+
+    private fun updateProfileInfo() {
+        if (binding.etBio.text?.isNotEmpty() == true) {
             binding.tilBio.isErrorEnabled = false
             userDao.saveBio(binding.etBio.text.toString())
-        }
-        else{
+        } else {
             binding.tilBio.error = "Fill up"
             binding.tilBio.isErrorEnabled = true
         }
 
-        if(binding.etGoalWeight.text?.isNotEmpty() == true){
+        if (binding.etGoalWeight.text?.isNotEmpty() == true) {
             binding.tilGoalweight.isErrorEnabled = false
             userDao.saveGoalWeight(binding.etGoalWeight.text.toString().toInt())
-        }
-        else{
+        } else {
             binding.tilGoalweight.error = "Fill up"
             binding.tilGoalweight.isErrorEnabled = true
         }

@@ -21,13 +21,14 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     @Inject
-    lateinit var firebaseAuth:FirebaseAuth
+    lateinit var firebaseAuth: FirebaseAuth
     private val viewModel: WorkoutViewModel by viewModels()
+
     @Inject
-    lateinit var userDao:UserDao
+    lateinit var userDao: UserDao
     override fun onBindView() {
         userDao.getData()
         super.onBindView()
@@ -35,13 +36,13 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         val adAdapter = AdAdapter()
 
         viewModel.getWorkouts()
-        with(binding){
+        with(binding) {
             workoutList.adapter = adapter
             workoutList.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             data.text = "Today, ${getCurrentDate()}"
 
-            viewModel.workoutListLiveData.observe(viewLifecycleOwner){
+            viewModel.workoutListLiveData.observe(viewLifecycleOwner) {
                 adapter.submitList(it.orEmpty())
             }
             adList.adapter = adAdapter
@@ -50,15 +51,14 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
             adAdapter.submitList(getAds())
 
         }
-        userDao.getDataLiveData.observe(this){
+        userDao.getDataLiveData.observe(this) {
             binding.greating.text = "Hello, ${it?.name}"
 
-            if(it?.pictureUrl !=null){
+            if (it?.pictureUrl != null) {
                 Glide.with(requireContext())
                     .load(it?.pictureUrl)
                     .into(binding.avatar)
-            }
-            else{
+            } else {
                 binding.avatar.setImageResource(R.drawable.baseline_person_24)
             }
         }
@@ -67,31 +67,33 @@ class HomeFragment:BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
                 R.id.action_homeFragment_to_workoutsFragment
             )
         }
-        adapter.itemClick = {workoutItem, shared->
+        adapter.itemClick = { workoutItem, shared ->
             val extras = FragmentNavigatorExtras(*shared.toList().toTypedArray())
             val action = HomeFragmentDirections.actionHomeToWorkoutDetailsFragment(workoutItem)
             findNavController().navigate(action, extras)
         }
     }
+
     private fun getCurrentDate(): String {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("dd MMM")
         return dateFormat.format(currentDate)
     }
+
     override fun onStart() {
         super.onStart()
-        if(firebaseAuth.currentUser == null){
+        if (firebaseAuth.currentUser == null) {
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeToLoginFragment()
             )
         }
     }
 
-    private fun getAds():List<AdDao>{
+    private fun getAds(): List<AdDao> {
         return listOf(
             AdDao(1, "Buy sport supplements", "10% discount", R.drawable.ad_1),
             AdDao(2, "Buy sport appliance", "0-0-12", R.drawable.ad_2),
 
-        )
+            )
     }
 }

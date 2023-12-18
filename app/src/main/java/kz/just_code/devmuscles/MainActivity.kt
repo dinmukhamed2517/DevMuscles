@@ -13,19 +13,21 @@ import kz.just_code.devmuscles.utilities.BottomNavigationViewListener
 
 
 @AndroidEntryPoint
-class  MainActivity : AppCompatActivity(), BottomNavigationViewListener{
-    private lateinit var binding:ActivityMainBinding
+class MainActivity : AppCompatActivity(), BottomNavigationViewListener {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
     }
+
     override fun showBottomNavigationView(show: Boolean) {
         if (show) {
             binding.bottomNavigation.visibility = View.VISIBLE

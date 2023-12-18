@@ -3,7 +3,8 @@ package kz.just_code.devmuscles.onboarding
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentViewPagerBinding
 
-class ViewPagerFragment:BaseFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate) {
+class ViewPagerFragment :
+    BaseFragment<FragmentViewPagerBinding>(FragmentViewPagerBinding::inflate) {
 
     override var showBottomNavigation: Boolean = false
     override fun onBindView() {
@@ -13,7 +14,8 @@ class ViewPagerFragment:BaseFragment<FragmentViewPagerBinding>(FragmentViewPager
             SecondFragment(),
             ThirdFragment()
         )
-        val adapter = ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+        val adapter =
+            ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
         binding.viewPager.adapter = adapter
 
     }

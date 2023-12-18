@@ -24,17 +24,18 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(FragmentWorkoutDetailsBinding::inflate) {
+class WorkoutDetailsFragment :
+    BaseFragment<FragmentWorkoutDetailsBinding>(FragmentWorkoutDetailsBinding::inflate) {
     private val args: WorkoutDetailsFragmentArgs by navArgs()
     private val viewModel: WorkoutViewModel by activityViewModels<WorkoutViewModel>()
 
     @Inject
     lateinit var userDao: UserDao
+
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
 
     private val calendar = Calendar.getInstance()
-
 
 
     override fun onBindView() {
@@ -132,22 +133,29 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
     }
 
     private fun showBottomSheet() {
-        val action = WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToWorkoutDetailsBottomSheetFragment(args.workout)
+        val action =
+            WorkoutDetailsFragmentDirections.actionWorkoutDetailsFragmentToWorkoutDetailsBottomSheetFragment(
+                args.workout
+            )
         findNavController().navigate(action)
     }
-    private fun getWorkouts(){
+
+    private fun getWorkouts() {
         viewModel.getWorkoutsByTarget(args.workout.target.toString().lowercase())
     }
-    private fun setUpWorkout(value:Workout){
-        val datePickerDialog = DatePickerDialog(requireContext(), {DatePicker, year:Int, month:Int, day:Int ->
-            val selectedDate = Calendar.getInstance()
-            selectedDate.set(year, month, day)
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val pickedDate = dateFormat.format(selectedDate.time)
-            userDao.saveWorkoutToList(SavedWorkout(value, pickedDate,  false))
-            showCustomDialog("Success", "Workout is scheduled")
 
-        },
+    private fun setUpWorkout(value: Workout) {
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { DatePicker, year: Int, month: Int, day: Int ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, month, day)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val pickedDate = dateFormat.format(selectedDate.time)
+                userDao.saveWorkoutToList(SavedWorkout(value, pickedDate, false))
+                showCustomDialog("Success", "Workout is scheduled")
+
+            },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
@@ -156,4 +164,5 @@ class WorkoutDetailsFragment:BaseFragment<FragmentWorkoutDetailsBinding>(Fragmen
     }
 
 }
+
 fun String.titlecaseFirstChar() = replaceFirstChar(Char::titlecase)

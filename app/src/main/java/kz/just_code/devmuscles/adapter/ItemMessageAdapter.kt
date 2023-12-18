@@ -11,12 +11,13 @@ import kz.just_code.devmuscles.repository.gpt.model.Choice
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDiffUtils()) {
+class ItemMessageAdapter : ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDiffUtils()) {
 
-    class MessageDiffUtils:DiffUtil.ItemCallback<Choice>(){
+    class MessageDiffUtils : DiffUtil.ItemCallback<Choice>() {
         override fun areItemsTheSame(oldItem: Choice, newItem: Choice): Boolean {
             return oldItem.index == newItem.index
         }
+
         override fun areContentsTheSame(oldItem: Choice, newItem: Choice): Boolean {
             return oldItem == newItem
         }
@@ -24,20 +25,26 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseMessageViewHolder<*> {
-        return when(viewType){
+        return when (viewType) {
             VIEW_TYPE_TRAINER -> MessageViewHolder(
-                ItemMessageTrainerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemMessageTrainerBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             )
+
             VIEW_TYPE_USER -> MessageUserViewHolder(
                 ItemMessageUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
+
             else -> throw IllegalArgumentException("Invalid view type")
         }
 
     }
 
     override fun submitList(list: MutableList<Choice>?) {
-        val newList:MutableList<Choice> = mutableListOf()
+        val newList: MutableList<Choice> = mutableListOf()
         list?.forEach {
             newList.add(it)
         }
@@ -51,17 +58,20 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
     }
 
 
-    inner class MessageViewHolder(binding: ItemMessageTrainerBinding):BaseMessageViewHolder<ItemMessageTrainerBinding>(binding){
+    inner class MessageViewHolder(binding: ItemMessageTrainerBinding) :
+        BaseMessageViewHolder<ItemMessageTrainerBinding>(binding) {
         override fun bindView(item: Choice) {
-            with(binding){
+            with(binding) {
                 content.text = item.message.content
                 time.text = getCurrentHourAndMinute()
             }
         }
     }
-    inner class MessageUserViewHolder(binding : ItemMessageUserBinding):BaseMessageViewHolder<ItemMessageUserBinding>(binding){
+
+    inner class MessageUserViewHolder(binding: ItemMessageUserBinding) :
+        BaseMessageViewHolder<ItemMessageUserBinding>(binding) {
         override fun bindView(item: Choice) {
-            with(binding){
+            with(binding) {
                 content.text = item.message.content
                 time.text = getCurrentHourAndMinute()
             }
@@ -69,14 +79,14 @@ class ItemMessageAdapter:ListAdapter<Choice, BaseMessageViewHolder<*>>(MessageDi
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(getItem(position).message.role){
+        return when (getItem(position).message.role) {
             "assistant" -> VIEW_TYPE_TRAINER
             "user" -> VIEW_TYPE_USER
             else -> throw IllegalArgumentException("Invalid message role")
         }
     }
 
-    companion object{
+    companion object {
         private const val VIEW_TYPE_TRAINER = 1
         private const val VIEW_TYPE_USER = 2
     }

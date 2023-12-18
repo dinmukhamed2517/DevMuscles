@@ -9,9 +9,9 @@ import kz.just_code.devmuscles.base.BaseAdViewHolder
 import kz.just_code.devmuscles.databinding.ItemAdvertisementBinding
 import kz.just_code.devmuscles.utilities.AdDao
 
-class AdAdapter:ListAdapter<AdDao, BaseAdViewHolder<*>>(AdDiffUtils()) {
+class AdAdapter : ListAdapter<AdDao, BaseAdViewHolder<*>>(AdDiffUtils()) {
 
-    class AdDiffUtils:DiffUtil.ItemCallback<AdDao>(){
+    class AdDiffUtils : DiffUtil.ItemCallback<AdDao>() {
         override fun areItemsTheSame(oldItem: AdDao, newItem: AdDao): Boolean {
             return oldItem.id == newItem.id
         }
@@ -21,6 +21,7 @@ class AdAdapter:ListAdapter<AdDao, BaseAdViewHolder<*>>(AdDiffUtils()) {
         }
 
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseAdViewHolder<*> {
         return AdViewHolder(
             ItemAdvertisementBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,9 +32,10 @@ class AdAdapter:ListAdapter<AdDao, BaseAdViewHolder<*>>(AdDiffUtils()) {
         holder.bindView(getItem(position))
     }
 
-    inner class AdViewHolder(binding:ItemAdvertisementBinding):BaseAdViewHolder<ItemAdvertisementBinding>(binding){
+    inner class AdViewHolder(binding: ItemAdvertisementBinding) :
+        BaseAdViewHolder<ItemAdvertisementBinding>(binding) {
         override fun bindView(item: AdDao) {
-            with(binding){
+            with(binding) {
                 mainImage.setImageResource(item.url)
                 title.text = item.title
                 chipText.text = item.description

@@ -14,18 +14,19 @@ import dagger.hilt.components.SingletonComponent
 object FireBaseAuthModule {
 
     @Provides
-    fun provideFireBaseAuth():FirebaseAuth{
+    fun provideFireBaseAuth(): FirebaseAuth {
         return FirebaseAuth.getInstance()
     }
 
     @Provides
-    fun provideUserDao(firebaseAuth:FirebaseAuth):UserDao{
+    fun provideUserDao(firebaseAuth: FirebaseAuth): UserDao {
         return UserDao(firebaseAuth)
     }
 
     @Provides
-    fun provideStorageRef(firebaseAuth: FirebaseAuth):StorageReference{
-        return FirebaseStorage.getInstance().getReference("Users/"+"${firebaseAuth.currentUser?.uid}")
+    fun provideStorageRef(firebaseAuth: FirebaseAuth): StorageReference {
+        return FirebaseStorage.getInstance()
+            .getReference("Users/" + "${firebaseAuth.currentUser?.uid}")
     }
 
 }

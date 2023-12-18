@@ -11,14 +11,16 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class StartWorkoutFragment:BaseFragment<FragmentStartworkoutBinding>(FragmentStartworkoutBinding::inflate) {
+class StartWorkoutFragment :
+    BaseFragment<FragmentStartworkoutBinding>(FragmentStartworkoutBinding::inflate) {
 
-    private val args:StartWorkoutFragmentArgs by navArgs()
+    private val args: StartWorkoutFragmentArgs by navArgs()
+
     @Inject
-    lateinit var userDao:UserDao
+    lateinit var userDao: UserDao
     override fun onBindView() {
         super.onBindView()
-        with(binding){
+        with(binding) {
             startBtn.setOnClickListener {
                 showCustomDialog("Congratulations!", "You've finished this exercise")
             }

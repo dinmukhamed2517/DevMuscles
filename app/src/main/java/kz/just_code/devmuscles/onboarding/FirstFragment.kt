@@ -5,7 +5,7 @@ import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentFirstBinding
 
-class FirstFragment:BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::inflate) {
+class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::inflate) {
     override var showBottomNavigation: Boolean = false
 
     override fun onBindView() {

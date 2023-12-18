@@ -7,7 +7,6 @@ import dagger.hilt.components.SingletonComponent
 import kz.just_code.devmuscles.utilities.RetryInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.internal.http.RetryAndFollowUpInterceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,9 +17,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkGptModule {
     private const val baseUrl = "https://api.openai.com/v1/"
-    private val token = "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"
-
-
+    private val token = "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"
     val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -32,13 +29,13 @@ object NetworkGptModule {
         .writeTimeout(30, TimeUnit.SECONDS)
         .connectTimeout(30, TimeUnit.SECONDS)
         .addInterceptor { chain ->
-        val newRequest: Request =
-            chain.request()
-                .newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer $token").build()
-        chain.proceed(newRequest)
-    }.build()
+            val newRequest: Request =
+                chain.request()
+                    .newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Authorization", "Bearer $token").build()
+            chain.proceed(newRequest)
+        }.build()
 
 
     fun getRetrofit(): Retrofit {

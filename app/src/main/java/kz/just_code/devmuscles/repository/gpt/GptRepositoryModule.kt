@@ -12,7 +12,7 @@ import javax.inject.Singleton
 object GptRepositoryModule {
     @Singleton
     @Provides
-    fun provideGptRepository(api: GptApi):GptRepositoryImpl{
+    fun provideGptRepository(api: GptApi): GptRepositoryImpl {
         return GptRepositoryImpl(api)
     }
 }

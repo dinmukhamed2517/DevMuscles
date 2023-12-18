@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel:ViewModel(){
+abstract class BaseViewModel : ViewModel() {
     private val coroutineScope = CoroutineScope(Dispatchers.IO + Job())
 
     private var _loadingLiveData = MutableLiveData<Boolean>()

@@ -10,11 +10,13 @@ import kz.just_code.devmuscles.databinding.ItemRecommendedWorkoutBinding
 import kz.just_code.devmuscles.fragments.titlecaseFirstChar
 import kz.just_code.devmuscles.repository.workout.model.Workout
 
-class ItemRecommendedWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
+class ItemRecommendedWorkoutAdapter :
+    ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
 
-    var itemClick:((Workout)-> Unit)? = null
-    class WorkoutDiffUtils:DiffUtil.ItemCallback<Workout>(){
+    var itemClick: ((Workout) -> Unit)? = null
+
+    class WorkoutDiffUtils : DiffUtil.ItemCallback<Workout>() {
         override fun areItemsTheSame(oldItem: Workout, newItem: Workout): Boolean {
             return oldItem.id == newItem.id
         }
@@ -27,7 +29,11 @@ class ItemRecommendedWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseWorkoutViewHolder<*> {
         return WorkoutViewHolder(
-            ItemRecommendedWorkoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemRecommendedWorkoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 
@@ -36,15 +42,15 @@ class ItemRecommendedWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*
     }
 
 
-    inner class WorkoutViewHolder(binding:ItemRecommendedWorkoutBinding):BaseWorkoutViewHolder<ItemRecommendedWorkoutBinding>(binding){
+    inner class WorkoutViewHolder(binding: ItemRecommendedWorkoutBinding) :
+        BaseWorkoutViewHolder<ItemRecommendedWorkoutBinding>(binding) {
         override fun bindView(item: Workout) {
-            with(binding){
+            with(binding) {
                 val workoutTitle = item.name?.titlecaseFirstChar()
-                if(workoutTitle?.length!! <15){
+                if (workoutTitle?.length!! < 15) {
                     title.text = workoutTitle
-                }
-                else{
-                    title.text = workoutTitle.substring(0,15)
+                } else {
+                    title.text = workoutTitle.substring(0, 15)
                 }
                 target.text = "${item.target?.titlecaseFirstChar()} Workout"
                 equipment.text = item.equipment?.titlecaseFirstChar()

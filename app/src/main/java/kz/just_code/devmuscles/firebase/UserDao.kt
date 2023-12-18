@@ -3,11 +3,9 @@ package kz.just_code.devmuscles.firebase
 import com.google.firebase.auth.FirebaseAuth
 
 
-
-
 class UserDao(
-    private var firebaseAuth:FirebaseAuth
-) :FRDBWrapper<User>() {
+    private var firebaseAuth: FirebaseAuth
+) : FRDBWrapper<User>() {
 
 
     override fun getTableName(): String {

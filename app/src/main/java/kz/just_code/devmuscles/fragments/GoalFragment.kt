@@ -1,22 +1,16 @@
 package kz.just_code.devmuscles.fragments
 
-import android.os.Build
-import android.view.View
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.base.SharedViewModel
 import kz.just_code.devmuscles.databinding.FragmentGoalBinding
 import kz.just_code.devmuscles.firebase.Goal
 
 
-
 @AndroidEntryPoint
-class GoalFragment:BaseFragment<FragmentGoalBinding>(FragmentGoalBinding::inflate) {
+class GoalFragment : BaseFragment<FragmentGoalBinding>(FragmentGoalBinding::inflate) {
     private val viewModel: SharedViewModel by activityViewModels()
     override var showBottomNavigation: Boolean = false
 
@@ -27,7 +21,7 @@ class GoalFragment:BaseFragment<FragmentGoalBinding>(FragmentGoalBinding::inflat
                 "Gain Muscles", "Get fitter", "Lose weight"
             )
             numberPicker.minValue = 0
-            numberPicker.maxValue = goals.size -1
+            numberPicker.maxValue = goals.size - 1
             numberPicker.wrapSelectorWheel = false
             numberPicker.displayedValues = goals
             numberPicker.setOnValueChangedListener { _, _, newVal ->

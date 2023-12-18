@@ -8,12 +8,12 @@ import retrofit2.http.Path
 interface WorkoutApi {
     @GET("exercises?limit=50")
     suspend fun getExercises(
-    ):Response<List<Workout>>
+    ): Response<List<Workout>>
 
     @GET("exercises/target/{target}")
     suspend fun getExercisesByTarget(
-        @Path("target") target:String,
-    ):Response<List<Workout>>
+        @Path("target") target: String,
+    ): Response<List<Workout>>
 
 
 }

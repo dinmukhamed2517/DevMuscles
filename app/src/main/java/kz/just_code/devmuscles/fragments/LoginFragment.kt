@@ -13,8 +13,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 
-class LoginFragment:BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
-    @Inject lateinit var firebaseAuth:FirebaseAuth
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
 
     override var showBottomNavigation: Boolean = false
 
@@ -26,23 +27,21 @@ class LoginFragment:BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inf
         binding.loginBtn.setOnClickListener {
             val email = binding.emailInput.text.toString()
             val password = binding.passwordInput.text.toString()
-            if(email.isNotEmpty() && password.isNotEmpty()){
+            if (email.isNotEmpty() && password.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if(it.isSuccessful){
+                    if (it.isSuccessful) {
                         Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(
                             R.id.action_loginFragment_to_home
                         )
-                    }
-                    else{
+                    } else {
                         binding.emailLayout.isErrorEnabled = true
                         binding.passwordLayout.isErrorEnabled = true
                         binding.passwordLayout.error = "Something is wrong"
                         binding.emailLayout.error = "Something is wrong"
                     }
                 }
-            }
-            else{
+            } else {
                 Toast.makeText(requireContext(), "Enter something", Toast.LENGTH_SHORT).show()
             }
         }
@@ -53,7 +52,7 @@ class LoginFragment:BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inf
         }
     }
 
-    val callback = object : OnBackPressedCallback(true){
+    val callback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             findNavController().navigate(
                 R.id.action_loginFragment_to_home

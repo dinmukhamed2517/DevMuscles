@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kz.just_code.devmuscles.databinding.FragmentBottomSheetWdBinding
 
-class WorkoutDetailsBottomSheetFragment:BottomSheetDialogFragment() {
+class WorkoutDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private val args: WorkoutDetailsBottomSheetFragmentArgs by navArgs()
 
@@ -28,12 +28,11 @@ class WorkoutDetailsBottomSheetFragment:BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val item = args.workoutItem
-        with(binding){
-            if (item.name != null && item.name.length <15){
+        with(binding) {
+            if (item.name != null && item.name.length < 15) {
                 title.text = item.name.titlecaseFirstChar()
-            }
-            else{
-                title.text = item.name?.substring(0,15)?.titlecaseFirstChar()
+            } else {
+                title.text = item.name?.substring(0, 15)?.titlecaseFirstChar()
             }
             Glide.with(requireContext())
                 .load(item.gifUrl)
@@ -44,7 +43,9 @@ class WorkoutDetailsBottomSheetFragment:BottomSheetDialogFragment() {
             gif.transitionName = "gif_${item.id}"
             gif.setOnClickListener {
                 findNavController().navigate(
-                    WorkoutDetailsBottomSheetFragmentDirections.actionWorkoutDetailsBottomSheetFragmentToFullscreenFragment(item)
+                    WorkoutDetailsBottomSheetFragmentDirections.actionWorkoutDetailsBottomSheetFragmentToFullscreenFragment(
+                        item
+                    )
                 )
             }
         }

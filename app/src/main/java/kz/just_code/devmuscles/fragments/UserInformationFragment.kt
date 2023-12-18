@@ -1,15 +1,12 @@
 package kz.just_code.devmuscles.fragments
 
 
-
 import android.net.Uri
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
 import kz.just_code.devmuscles.base.BaseFragment
@@ -21,10 +18,13 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class UserInformationFragment:BaseFragment<FragmentUserInformationBinding>(FragmentUserInformationBinding::inflate) {
+class UserInformationFragment :
+    BaseFragment<FragmentUserInformationBinding>(FragmentUserInformationBinding::inflate) {
     private val viewModel: SharedViewModel by activityViewModels()
+
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
+
     @Inject
     lateinit var userDao: UserDao
     private var imageUri: Uri? = null
@@ -33,52 +33,48 @@ class UserInformationFragment:BaseFragment<FragmentUserInformationBinding>(Fragm
     lateinit var storageReference: StorageReference
 
 
-
     override var showBottomNavigation: Boolean = false
 
     override fun onBindView() {
         super.onBindView()
         var ok = true
-        with(binding){
+        with(binding) {
             nextBtn.setOnClickListener {
 
-                if(imageUri != null){
+                if (imageUri != null) {
                     uploadProfilePic()
                 }
-                if(name.text?.isEmpty() == true){
+                if (name.text?.isEmpty() == true) {
                     nameLayout.error = "Fill up"
                     nameLayout.isErrorEnabled = true
                     ok = false
-                }
-                else{
+                } else {
                     nameLayout.isErrorEnabled = false
                     viewModel.name = name.text.toString()
                     ok = true
                 }
-                if(lastname.text?.isEmpty() == true){
+                if (lastname.text?.isEmpty() == true) {
                     lastnameLayout.error = "Fill up"
                     lastnameLayout.isErrorEnabled = true
                     ok = false
 
-                }
-                else{
+                } else {
                     lastnameLayout.isErrorEnabled = false
                     viewModel.lastname = lastname.text.toString()
                     ok = true
                 }
-                if(bio.text?.isEmpty() == true){
+                if (bio.text?.isEmpty() == true) {
                     bioLayout.error = "Fill up"
                     bioLayout.isErrorEnabled = true
                     ok = false
 
-                }
-                else{
+                } else {
                     bioLayout.isErrorEnabled = false
                     viewModel.bio = bio.text.toString()
                     ok = true
 
                 }
-                if(ok){
+                if (ok) {
                     val user = User(
                         viewModel.name,
                         viewModel.lastname,
@@ -101,24 +97,27 @@ class UserInformationFragment:BaseFragment<FragmentUserInformationBinding>(Fragm
             }
         }
     }
-    private fun uploadProfilePic(){
+
+    private fun uploadProfilePic() {
         imageUri?.let {
-            storageReference.putFile(it).addOnSuccessListener {task->
-                task.metadata?.reference?.downloadUrl?.addOnSuccessListener {uri->
+            storageReference.putFile(it).addOnSuccessListener { task ->
+                task.metadata?.reference?.downloadUrl?.addOnSuccessListener { uri ->
                     val imgUrl = uri.toString()
                     userDao.saveProfilePic(imgUrl)
                     showCustomDialog("Success", "Information saved")
 
                 }
 
-            }.addOnFailureListener{
-                Toast.makeText(requireContext(), "Unable to upload profile pic", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "Unable to upload profile pic", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
     private val resultLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent()){
+        ActivityResultContracts.GetContent()
+    ) {
         binding.avatar.setImageURI(it)
         imageUri = it
     }

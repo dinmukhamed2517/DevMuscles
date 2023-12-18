@@ -6,12 +6,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.base.SharedViewModel
 import kz.just_code.devmuscles.databinding.FragmentLevelBinding
-import kz.just_code.devmuscles.firebase.Goal
 import kz.just_code.devmuscles.firebase.Level
 
 
 @AndroidEntryPoint
-class LevelFragment:BaseFragment<FragmentLevelBinding>(FragmentLevelBinding::inflate) {
+class LevelFragment : BaseFragment<FragmentLevelBinding>(FragmentLevelBinding::inflate) {
 
     private val viewModel: SharedViewModel by activityViewModels()
     override var showBottomNavigation: Boolean = false
@@ -22,7 +21,7 @@ class LevelFragment:BaseFragment<FragmentLevelBinding>(FragmentLevelBinding::inf
                 "Beginner", "Intermediate", "Advance"
             )
             numberPicker.minValue = 0
-            numberPicker.maxValue = goals.size -1
+            numberPicker.maxValue = goals.size - 1
             numberPicker.wrapSelectorWheel = false
             numberPicker.displayedValues = goals
             numberPicker.setOnValueChangedListener { _, _, newVal ->

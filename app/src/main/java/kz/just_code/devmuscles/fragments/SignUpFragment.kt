@@ -1,21 +1,19 @@
 package kz.just_code.devmuscles.fragments
 
-import android.content.Context
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kz.just_code.devmuscles.R
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentSignUpBinding
-import kz.just_code.devmuscles.utilities.BottomNavigationViewListener
 import javax.inject.Inject
 
 
 @AndroidEntryPoint
 
-class SignUpFragment:BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
-    @Inject lateinit var firebaseAuth:FirebaseAuth
+class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
 
     override var showBottomNavigation: Boolean = false
 
@@ -28,31 +26,33 @@ class SignUpFragment:BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::
 
 
 
-            if(email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
-                if(password == confirmPassword){
-                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                        if(it.isSuccessful){
-                            binding.emailLayout.isErrorEnabled = false
-                            findNavController().navigate(
-                                SignUpFragmentDirections.actionSignUpToGenderFragment()
-                            )
+            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+                if (password == confirmPassword) {
+                    firebaseAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                binding.emailLayout.isErrorEnabled = false
+                                findNavController().navigate(
+                                    SignUpFragmentDirections.actionSignUpToGenderFragment()
+                                )
+                            } else {
+                                binding.emailLayout.isErrorEnabled = true
+                                binding.passwordConfLayout.isErrorEnabled = true
+                                binding.passwordLayout.isErrorEnabled = true
+                                binding.passwordConfLayout.error = "Something is wrong"
+                                binding.passwordLayout.error = "Something is wrong"
+                                binding.emailLayout.error = "Something is wrong"
+                            }
                         }
-                        else{
-                            binding.emailLayout.isErrorEnabled = true
-                            binding.passwordConfLayout.isErrorEnabled = true
-                            binding.passwordLayout.isErrorEnabled = true
-                            binding.passwordConfLayout.error = "Something is wrong"
-                            binding.passwordLayout.error = "Something is wrong"
-                            binding.emailLayout.error = "Something is wrong"
-                        }
-                    }
 
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Passwords are not matching",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                else{
-                    Toast.makeText(requireContext(), "Passwords are not matching", Toast.LENGTH_SHORT).show()
-                }
-            }
-            else{
+            } else {
                 Toast.makeText(requireContext(), "Enter something", Toast.LENGTH_SHORT).show()
             }
         }

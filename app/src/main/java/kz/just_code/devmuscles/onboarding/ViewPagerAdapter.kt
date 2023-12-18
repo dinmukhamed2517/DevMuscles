@@ -9,10 +9,10 @@ import kz.just_code.devmuscles.base.BaseFragment
 
 class ViewPagerAdapter(
     list: ArrayList<BaseFragment<out ViewBinding>>,
-    fm:FragmentManager, lifecycle:Lifecycle
-): FragmentStateAdapter(fm, lifecycle) {
+    fm: FragmentManager, lifecycle: Lifecycle
+) : FragmentStateAdapter(fm, lifecycle) {
 
-    private val fragmentList:ArrayList<BaseFragment<out ViewBinding>> = list
+    private val fragmentList: ArrayList<BaseFragment<out ViewBinding>> = list
     override fun getItemCount(): Int {
         return fragmentList.size
     }

@@ -21,21 +21,23 @@ object NetworkWorkoutModule {
     }
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
-        .addInterceptor{chain ->
+        .addInterceptor { chain ->
             val request = chain.request()
                 .newBuilder()
-                .addHeader("X-RapidAPI-Key", "c92e681a4bmsh271a014ff49b4edp1e3c55jsn678844079787")
-                .addHeader("X-RapidAPI-Host","exercisedb.p.rapidapi.com")
+                .addHeader("X-RapidAPI-Key", "ca2ccc5230msh1f8ded36ce15a1dp19ac37jsnd09f3514fcec")
+                .addHeader("X-RapidAPI-Host", "exercisedb.p.rapidapi.com")
                 .build()
-                chain.proceed(request)
+            chain.proceed(request)
         }.build()
-    fun getRetrofit():Retrofit{
+
+    fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
     }
+
     @Provides
     @Singleton
     fun getApi(): WorkoutApi {

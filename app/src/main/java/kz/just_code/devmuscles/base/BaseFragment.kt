@@ -22,11 +22,11 @@ import java.lang.RuntimeException
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>): Fragment() {
+abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
     private var _binding: VB? = null
 
     private lateinit var bottomNavigationViewListener: BottomNavigationViewListener
-    open var showBottomNavigation:Boolean = true
+    open var showBottomNavigation: Boolean = true
 
     val binding get() = _binding ?: throw RuntimeException()
 
@@ -50,6 +50,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>): 
             Log.e("OnViewCreated", "Exception by view binding: ${e.message}")
         }
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is BottomNavigationViewListener) {
@@ -60,7 +61,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>): 
 
     }
 
-    protected fun showCustomDialog(title:String, content:String){
+    protected fun showCustomDialog(title: String, content: String) {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
@@ -80,7 +81,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: Inflate<VB>): 
         }
     }
 
-    open fun onInit() { }
+    open fun onInit() {}
     open fun onBindView() {}
     open fun bindViewModel() {}
 

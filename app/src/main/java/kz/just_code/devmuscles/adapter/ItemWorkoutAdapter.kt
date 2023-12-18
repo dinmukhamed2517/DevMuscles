@@ -13,11 +13,12 @@ import kz.just_code.devmuscles.databinding.ItemWorkoutBinding
 import kz.just_code.devmuscles.fragments.titlecaseFirstChar
 import kz.just_code.devmuscles.repository.workout.model.Workout
 
-class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
+class ItemWorkoutAdapter : ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutDiffUtils()) {
 
 
-    var itemClick:((Workout, Map<View, String>)-> Unit)? = null
-    class WorkoutDiffUtils:DiffUtil.ItemCallback<Workout>(){
+    var itemClick: ((Workout, Map<View, String>) -> Unit)? = null
+
+    class WorkoutDiffUtils : DiffUtil.ItemCallback<Workout>() {
         override fun areItemsTheSame(oldItem: Workout, newItem: Workout): Boolean {
             return oldItem.id == newItem.id
         }
@@ -39,26 +40,26 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
     }
 
 
-    inner class WorkoutViewHolder(binding:ItemWorkoutBinding):BaseWorkoutViewHolder<ItemWorkoutBinding>(binding){
+    inner class WorkoutViewHolder(binding: ItemWorkoutBinding) :
+        BaseWorkoutViewHolder<ItemWorkoutBinding>(binding) {
 
 
         override fun bindView(item: Workout) {
-            with(binding){
+            with(binding) {
                 val workoutTitle = item.name?.titlecaseFirstChar()
-                if(workoutTitle?.length!! <15){
+                if (workoutTitle?.length!! < 15) {
                     title.text = workoutTitle
-                }
-                else{
-                    title.text = workoutTitle.substring(0,15)
+                } else {
+                    title.text = workoutTitle.substring(0, 15)
                 }
                 type.text = "${item.target?.titlecaseFirstChar()} Workout"
                 equipment.text = item.equipment?.titlecaseFirstChar()
                 type.transitionName = "type_${item.id}"
                 title.transitionName = "title_${item.id}"
-                var color:Int? = null
-                var chipColor:Int? = null
-                var imageRes:Int? = null
-                var padding:Int = 0
+                var color: Int? = null
+                var chipColor: Int? = null
+                var imageRes: Int? = null
+                var padding: Int = 0
                 completed.isVisible = false
                 when (item.target) {
                     "abs" -> {
@@ -67,6 +68,7 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                         chipColor = R.color.chip_color1
                         padding = 200
                     }
+
                     "delts" -> {
                         imageRes = R.drawable.nobg_girl
                         color = R.color.card_view_2
@@ -74,6 +76,7 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
 
 
                     }
+
                     "biceps" -> {
                         imageRes = R.drawable.biceps_nobg
                         color = R.color.card_view_3
@@ -81,6 +84,7 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
 
 
                     }
+
                     "calves" -> {
                         imageRes = R.drawable.calves_nobg
                         color = R.color.card_view_2
@@ -88,30 +92,35 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
 
 
                     }
+
                     "quads" -> {
                         imageRes = R.drawable.legs_nobg
                         color = R.color.card_view_2
                         chipColor = R.color.chip_color2
 
                     }
+
                     "triceps" -> {
                         imageRes = R.drawable.triceps_nobg
                         color = R.color.card_view_3
                         chipColor = R.color.chip_color3
 
                     }
+
                     "lats" -> {
                         imageRes = R.drawable.lats_nobg
                         color = R.color.card_view_3
                         chipColor = R.color.chip_color3
                     }
-                    "glutes"->{
+
+                    "glutes" -> {
                         imageRes = R.drawable.girl1_nobg
                         color = R.color.card_view_3
                         chipColor = R.color.chip_color3
                     }
+
                     else -> {
-                        imageRes= R.drawable.the_rest_nobg
+                        imageRes = R.drawable.the_rest_nobg
                         color = R.color.card_view_1
                         chipColor = R.color.chip_color1
 
@@ -120,16 +129,18 @@ class ItemWorkoutAdapter:ListAdapter<Workout, BaseWorkoutViewHolder<*>>(WorkoutD
                 image.setImageResource(imageRes)
                 image.transitionName = "image_${item.id}"
                 image.setPadding(0, padding, 0, 0)
-                root.setCardBackgroundColor(ContextCompat.getColor(root.context, color ))
+                root.setCardBackgroundColor(ContextCompat.getColor(root.context, color))
                 type.setChipBackgroundColorResource(chipColor)
 
             }
             itemView.setOnClickListener {
-                itemClick?.invoke(item, mapOf(
-                    binding.title to "title_${item.id}",
-                    binding.type to "type_${item.id}",
-                    binding.image to "image_${item.id}"
-                ))
+                itemClick?.invoke(
+                    item, mapOf(
+                        binding.title to "title_${item.id}",
+                        binding.type to "type_${item.id}",
+                        binding.image to "image_${item.id}"
+                    )
+                )
             }
         }
     }

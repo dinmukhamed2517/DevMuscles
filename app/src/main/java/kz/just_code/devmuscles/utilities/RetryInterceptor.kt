@@ -10,6 +10,7 @@ import java.net.SocketTimeoutException
 class RetryInterceptor : Interceptor {
     private val maxRetries = 3
     private var tryCount = 0
+
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()

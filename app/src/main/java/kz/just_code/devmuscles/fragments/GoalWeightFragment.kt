@@ -9,7 +9,8 @@ import kz.just_code.devmuscles.databinding.FragmentGoalWeightBinding
 
 
 @AndroidEntryPoint
-class GoalWeightFragment:BaseFragment<FragmentGoalWeightBinding>(FragmentGoalWeightBinding::inflate) {
+class GoalWeightFragment :
+    BaseFragment<FragmentGoalWeightBinding>(FragmentGoalWeightBinding::inflate) {
 
     private val viewModel: SharedViewModel by activityViewModels()
     override var showBottomNavigation: Boolean = false

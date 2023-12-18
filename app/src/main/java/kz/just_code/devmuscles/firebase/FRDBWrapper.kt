@@ -8,7 +8,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kz.just_code.devmuscles.repository.workout.model.Workout
 
 abstract class FRDBWrapper<T> {
     private val db = FirebaseDatabase.getInstance()
@@ -37,6 +36,7 @@ abstract class FRDBWrapper<T> {
             }
         }
     }
+
     fun saveData(value: T, successSave: ((Boolean) -> Unit)? = null) {
         db.getReference(getTableName()).setValue(value) { error, _ ->
             successSave?.invoke(error == null)
@@ -45,27 +45,29 @@ abstract class FRDBWrapper<T> {
             }
         }
     }
-    fun saveWorkoutToList(value:SavedWorkout){
+
+    fun saveWorkoutToList(value: SavedWorkout) {
         val workoutId = db.getReference(getTableName()).push().key
         if (workoutId != null) {
             db.getReference(getTableName()).child("favoriteList").child(workoutId).setValue(value)
         }
     }
 
-    fun saveProfilePic(value:String){
+    fun saveProfilePic(value: String) {
         db.getReference(getTableName()).child("pictureUrl").setValue(value)
     }
 
-    fun changeCompleteStatus(value:Boolean, workoutId:String){
-        db.getReference(getTableName()).child("favoriteList").child(workoutId).child("completed").setValue(value)
+    fun changeCompleteStatus(value: Boolean, workoutId: String) {
+        db.getReference(getTableName()).child("favoriteList").child(workoutId).child("completed")
+            .setValue(value)
     }
 
 
-    fun saveBio(value:String){
+    fun saveBio(value: String) {
         db.getReference(getTableName()).child("bio").setValue(value)
     }
 
-    fun saveGoalWeight(value:Int){
+    fun saveGoalWeight(value: Int) {
         db.getReference(getTableName()).child("goalWeight").setValue(value)
 
     }

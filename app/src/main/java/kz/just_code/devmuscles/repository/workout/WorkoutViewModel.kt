@@ -11,12 +11,12 @@ import javax.inject.Inject
 @HiltViewModel
 class WorkoutViewModel @Inject constructor(
     private var repository: WorkoutRepository
-):BaseViewModel() {
+) : BaseViewModel() {
 
     private var _workoutListLiveData = MutableLiveData<List<Workout>?>()
     var workoutListLiveData: LiveData<List<Workout>?> = _workoutListLiveData
 
-     fun getWorkouts(){
+    fun getWorkouts() {
         launch(
             request = {
                 repository.getWorkoutList()
@@ -27,7 +27,7 @@ class WorkoutViewModel @Inject constructor(
         )
     }
 
-     fun getWorkoutsByTarget(target:String){
+    fun getWorkoutsByTarget(target: String) {
         launch(
             request = {
                 repository.getWorkoutListByTarget(target)
@@ -37,12 +37,9 @@ class WorkoutViewModel @Inject constructor(
             }
         )
     }
+
     fun setSortedWorkouts(sortedWorkouts: List<Workout>) {
         _workoutListLiveData.value = sortedWorkouts
     }
 
 }
-//    private fun getData() {
-//        val data = repository.getWorkoutList()
-//        _workoutListLiveData.postValue(data)
-//    }

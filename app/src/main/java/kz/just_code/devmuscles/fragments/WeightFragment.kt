@@ -10,7 +10,7 @@ import kz.just_code.devmuscles.databinding.FragmentWeightBinding
 
 
 @AndroidEntryPoint
-class WeightFragment:BaseFragment<FragmentWeightBinding>(FragmentWeightBinding::inflate) {
+class WeightFragment : BaseFragment<FragmentWeightBinding>(FragmentWeightBinding::inflate) {
     private val viewModel: SharedViewModel by activityViewModels()
     override var showBottomNavigation: Boolean = false
 
@@ -25,10 +25,9 @@ class WeightFragment:BaseFragment<FragmentWeightBinding>(FragmentWeightBinding::
                 viewModel.weight = newVal
             }
             nextBtn.setOnClickListener {
-                if(viewModel.weight == null){
+                if (viewModel.weight == null) {
                     Toast.makeText(requireContext(), "Choose the value", Toast.LENGTH_SHORT).show()
-                }
-                else{
+                } else {
                     findNavController().navigate(
                         WeightFragmentDirections.actionWeightFragmentToGoalWeightFragment()
                     )

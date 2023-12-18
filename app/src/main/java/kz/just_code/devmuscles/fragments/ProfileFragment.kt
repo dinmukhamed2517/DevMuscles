@@ -18,32 +18,33 @@ import kz.just_code.devmuscles.firebase.Level
 import kz.just_code.devmuscles.firebase.UserDao
 import kz.just_code.devmuscles.repository.workout.model.Workout
 import kz.just_code.devmuscles.utilities.calculateDailyCalories
-import java.lang.Math.ceil
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate){
-    @Inject  lateinit var firebaseAuth:FirebaseAuth
+class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
 
-    @Inject lateinit var userDao: UserDao
-
-
-    var workouts:MutableList<Workout> = mutableListOf()
-    var completedWorkouts:MutableList<Workout> = mutableListOf()
+    @Inject
+    lateinit var userDao: UserDao
 
 
-    var weight:Int? = null
-    var height:Int? = null
-    var dailyCalories:Double?= null
+    var workouts: MutableList<Workout> = mutableListOf()
+    var completedWorkouts: MutableList<Workout> = mutableListOf()
+
+
+    var weight: Int? = null
+    var height: Int? = null
+    var dailyCalories: Double? = null
 
 
     override fun onBindView() {
 
         userDao.getData()
         super.onBindView()
-        with(binding){
+        with(binding) {
             signOutBtn.setOnClickListener {
                 signOut()
             }
@@ -56,29 +57,34 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
                 findNavController().popBackStack()
             }
         }
-        userDao.getDataLiveData.observe(this){
+        userDao.getDataLiveData.observe(this) {
             weight = it?.weight
             height = it?.height
             val age = it?.age
             val goalWeight = it?.goalWeight
             val goal = it?.goal
-            dailyCalories = calculateDailyCalories(weight?.toDouble(), goalWeight?.toDouble(), age, height?.toDouble(), goal)
+            dailyCalories = calculateDailyCalories(
+                weight?.toDouble(),
+                goalWeight?.toDouble(),
+                age,
+                height?.toDouble(),
+                goal
+            )
             binding.username.text = it?.name
             binding.weight.text = it?.weight.toString()
             binding.height.text = it?.height.toString()
             binding.bio.text = it?.bio
-            if(it?.pictureUrl !=null){
+            if (it?.pictureUrl != null) {
                 Glide.with(requireContext())
                     .load(it?.pictureUrl)
                     .into(binding.avatar)
-            }
-            else{
+            } else {
                 binding.avatar.setImageResource(R.drawable.baseline_person_24)
             }
             val workoutMap = it?.favoriteList
-            workoutMap?.forEach {item->
-                if(item.value.savedTime == getCurrentDate()){
-                    if(item.value.completed){
+            workoutMap?.forEach { item ->
+                if (item.value.savedTime == getCurrentDate()) {
+                    if (item.value.completed) {
                         completedWorkouts.add(item.value.workout)
                     }
                     workouts.add(item.value.workout)
@@ -87,8 +93,8 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
                 }
             }
 
-            var level:String? = null
-            when(it?.level){
+            var level: String? = null
+            when (it?.level) {
                 Level.BEGINNER -> level = "Beginner"
                 Level.INTERMEDIATE -> level = "Intermediate"
                 Level.ADVANCE -> level = "Advance"
@@ -107,17 +113,15 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
     }
 
 
-
-
     fun getCurrentDate(): String {
         val currentDate = LocalDate.now()
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         return currentDate.format(formatter)
     }
 
-    private fun signOut(){
+    private fun signOut() {
         var alertDialog: AlertDialog? = null
-        alertDialog = MaterialAlertDialogBuilder(requireContext(), )
+        alertDialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle("Sign out")
             .setMessage("Are you sure you want to sign out?")
             .setPositiveButton("Yes") { _, _ ->
@@ -132,11 +136,12 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             }
             .show()
     }
-    private fun weightAnimation(){
+
+    private fun weightAnimation() {
         val animator = weight?.toFloat()?.let { ValueAnimator.ofFloat(0f, it) }
         animator?.duration = 500
         animator?.start()
-        animator?.addUpdateListener(object:ValueAnimator.AnimatorUpdateListener{
+        animator?.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
             override fun onAnimationUpdate(animation: ValueAnimator) {
                 val floatValue = animation.animatedValue as Float
                 val intValue = floatValue.toInt()
@@ -145,11 +150,11 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
         })
     }
 
-    private fun heightAnimation(){
+    private fun heightAnimation() {
         val animator = height?.toFloat()?.let { ValueAnimator.ofFloat(0f, it) }
         animator?.duration = 500
         animator?.start()
-        animator?.addUpdateListener(object:ValueAnimator.AnimatorUpdateListener{
+        animator?.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
             override fun onAnimationUpdate(animation: ValueAnimator) {
                 val floatValue = animation.animatedValue as Float
                 val intValue = floatValue.toInt()
@@ -157,11 +162,12 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             }
         })
     }
-    private fun caloriesAnimation(){
+
+    private fun caloriesAnimation() {
         val animator = dailyCalories?.toFloat()?.let { ValueAnimator.ofFloat(0f, it) }
         animator?.duration = 500
         animator?.start()
-        animator?.addUpdateListener(object:ValueAnimator.AnimatorUpdateListener{
+        animator?.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
             override fun onAnimationUpdate(animation: ValueAnimator) {
                 val floatValue = animation.animatedValue as Float
                 val intValue = floatValue.toInt()
@@ -170,14 +176,13 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
         })
     }
 
-    private fun percentAnimation(){
+    private fun percentAnimation() {
 
-        if(workouts.isEmpty()){
+        if (workouts.isEmpty()) {
             binding.progressBar.isVisible = false
             binding.percentageText.isVisible = false
             binding.noWorkoutText.isVisible = true
-        }
-        else {
+        } else {
             binding.progressBar.isVisible = true
             binding.percentageText.isVisible = true
             binding.noWorkoutText.isVisible = false
@@ -185,7 +190,7 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
             val animator = ValueAnimator.ofFloat(0f, getPersentage())
             animator?.duration = 500
             animator?.start()
-            animator?.addUpdateListener(object:ValueAnimator.AnimatorUpdateListener{
+            animator?.addUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
                 override fun onAnimationUpdate(animation: ValueAnimator) {
                     val floatValue = animation.animatedValue as Float
                     val intValue = floatValue.toInt()
@@ -195,15 +200,16 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
                         progressMax = 100f
                         progressBarColorStart = Color.RED
                         progressBarColorEnd = Color.GREEN
-                        progressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
+                        progressBarColorDirection =
+                            CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
                     }
                 }
             })
         }
     }
 
-    private fun getPersentage():Float{
-        val division:Float = completedWorkouts.size.toFloat()/ workouts.size
-        return (division*100)
+    private fun getPersentage(): Float {
+        val division: Float = completedWorkouts.size.toFloat() / workouts.size
+        return (division * 100)
     }
 }

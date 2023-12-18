@@ -6,8 +6,9 @@ import com.bumptech.glide.Glide
 import kz.just_code.devmuscles.base.BaseFragment
 import kz.just_code.devmuscles.databinding.FragmentFullscreenBinding
 
-class FullscreenFragment:BaseFragment<FragmentFullscreenBinding>(FragmentFullscreenBinding::inflate) {
-    private val args:FullscreenFragmentArgs by navArgs()
+class FullscreenFragment :
+    BaseFragment<FragmentFullscreenBinding>(FragmentFullscreenBinding::inflate) {
+    private val args: FullscreenFragmentArgs by navArgs()
     override var showBottomNavigation: Boolean = false
     override fun onBindView() {
         super.onBindView()
@@ -18,7 +19,8 @@ class FullscreenFragment:BaseFragment<FragmentFullscreenBinding>(FragmentFullscr
 
         binding.image.transitionName = "gif_${args.workoutItem.id}"
 
-        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition =
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
     }
 
 }
